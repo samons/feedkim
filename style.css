@@ -12,3 +12,13 @@ Text Domain:
 Tags: 
 
 -------------*/
+
+/*logo*/
+.logoImg{padding-right:4px}
+.logoImg img{width:16px;border-radius:50%}
+.logoText{margin-left:-15px}
+
+body,
+body.home,
+body.blog{background-color:#f1f1f1;color:#444}
+.navbar-default{background-color:#f1f1f1;border:none;}
