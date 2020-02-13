@@ -12,13 +12,72 @@ Text Domain:
 Tags: 
 
 -------------*/
+body,
+body.home,
+body.blog{
+	background-color:#f1f1f1;
+	background-image:url("image/shadow_light.png"),url("image/pixels.png");
+    /*background-position:0 50px,0 50px;*/
+    background-repeat:repeat-x,repeat;
+}
 
 /*logo*/
 .logoImg{padding-right:4px}
 .logoImg img{width:16px;border-radius:50%}
 .logoText{margin-left:-15px}
 
-body,
-body.home,
-body.blog{background-color:#f1f1f1;color:#444}
-.navbar-default{background-color:#f1f1f1;border:none;}
+/*nav导航*/
+.navbar{margin-bottom:0;border-top:1.5px solid #337ab7}
+/*navRSS导航*/
+.left-feeds{padding-left:0;padding-right:0}
+.left-feeds .feeds-div a,
+.left-feeds .feeds-div .btn{
+	color:#fff;
+}
+.left-feeds .feeds-div .btn{padding:0}
+/*.left-feeds .feeds-div a:hover{text-decoration:none}*/
+.left-feeds .feeds-div>ul{
+	list-style-type:none;
+	padding-left:0.8em;
+	font-weight:700;
+}
+.left-feeds .feeds-div ul.feed-menu li{
+	margin:3px auto;
+	padding:3px 5px;
+	width:100%;
+	border-radius:3px;
+}
+.left-feeds .feeds-div ul.feed-menu li:hover{
+	background-color:#d8d8d8;
+	background-color:rgba(0,0,0,0.25);
+}
+.left-feeds .feeds-div ul.sub-menu{
+	padding-left:20px;
+}
+.left-feeds .feeds-div .favicon-ico{
+	margin-right:4px;
+	width:14px;
+	height:auto;
+}
+
+/*.index-list*/
+.index-list>div{
+	background-color:#a4a4a4;
+	background-color:rgba(0,0,0,0.25);
+	padding-top:70px;
+	padding-bottom:10px;
+	min-height:100vh;
+}
+.index-list article{
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	background-color:#f1f1f1;
+}
+.index-list .left{color:#eee}
+
+/*footer*/
+.footer{
+	padding-top:20px;
+	text-align:center;
+}

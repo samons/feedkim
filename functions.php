@@ -35,7 +35,22 @@ if( function_exists('register_sidebar') ) {
     ));
     register_nav_menus( array(
     'primary' => __('顶部导航', 'feedkim'),
-    'link' => __('友情链接', 'feedkim')
+    'link' => __('友情链接', 'feedkim'),
+    'feeds' => 'feeds'
     ));
+}
+/**
+ * 判断文件是否存在，支持本地及远程文件
+ * //blog.csdn.net/qiuyu6958334/article/details/100144549
+ * @param  String  $file 文件路径
+ * @return Boolean
+ */
+function feedkim_file_exists($file){
+    if(strtolower(substr($file, 0, 4))=='http'){// 远程文件
+        $header = get_headers($file, true);
+        return isset($header[0]) && (strpos($header[0], '200') || strpos($header[0], '304'));
+    }else{// 本地文件
+        return file_exists($file);
+    }
 }
 ?>
