@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes();?>>
 <head>
-<meta charset="<?php bloginfo('charset'); ?>">
+<meta charset="<?php bloginfo('charset');?>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <?php wp_head(); ?>
 
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
+<link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php bloginfo('template_url')?>/style.css">
 
-<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+<script src="<?php bloginfo('template_url')?>/js/bootstrap.min.js"></script>
 
 <!--[if lt IE 9]>
   <script src="//apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
