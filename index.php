@@ -10,10 +10,6 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 			if ( has_nav_menu('feeds')) { ?>
 			<form method="POST" action="" role="form">
 			<?php 
-			if (isset($_POST['feedUrl'])) {
-				//解析输出订阅数据
-				echo $_POST['feedUrl'];
-			}
 				wp_nav_menu( array(  
 				'theme_location' => 'feeds',
 				'container'  => 'div',
@@ -30,7 +26,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 			<?php } ?>		
 		</div>
 		<div class="col-sm-5 list">
-			<?php get_template_part('index-article');//列表页面 ?>
+			<?php get_template_part('index-list');//列表页面 ?>
 		</div>
 		<div class="col-sm-3 right">right</div>
 		<div class="clearfix visible-xs-block"></div>

@@ -65,17 +65,20 @@ body.blog{
 .index-list>div{
 	background-color:#a4a4a4;
 	background-color:rgba(0,0,0,0.25);
-	padding-top:70px;
+	padding-top:40px;
 	padding-bottom:10px;
 	min-height:100vh;
 }
-.index-list article{
+/*.index-list left*/
+.index-list .left{color:#eee}
+/*.index-list list*/
+.index-list .list ul{margin:0;padding:0;list-style-type: none;}
+.index-list .list ul li{
 	padding: 15px;
 	margin-bottom: 10px;
-	border-radius: 2px;
+	border-radius: 4px;
 	background-color:#f1f1f1;
 }
-.index-list .left{color:#eee}
 
 /*footer*/
 .footer{

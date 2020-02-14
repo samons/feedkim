@@ -42,6 +42,7 @@ if( function_exists('register_sidebar') ) {
 /**
  * 判断文件是否存在，支持本地及远程文件
  * //blog.csdn.net/qiuyu6958334/article/details/100144549
+ * @since  2020-2-12
  * @param  String  $file 文件路径
  * @return Boolean
  */
@@ -52,5 +53,55 @@ function feedkim_file_exists($file){
     }else{// 本地文件
         return file_exists($file);
     }
+}
+/**
+ * 解析RSS函数，系统自带的，可以输出object
+ * //zhangzifan.com/wordpress-fetch_feed.html
+ * //zhangzifan.com/wordpress-feed-rss.html
+ * //sc.chinaz.com/mobandemo.aspx?downloadid=3201884749920这个是个人网站的模版
+ * @since  2020-2-14
+ * @param  mixed $url URL of feed to retrieve. If an array of URLs, the feeds are merged
+ * @return WP_Error|SimplePie WP_Error object on failure or SimplePie object on success
+ */
+function feedkim_fetch_feed($url){
+    if ( ! class_exists( 'SimplePie', false ) ) {
+        require_once( ABSPATH . WPINC . '/class-simplepie.php' );
+    }
+
+    require_once( ABSPATH . WPINC . '/class-wp-feed-cache.php' );
+    require_once( ABSPATH . WPINC . '/class-wp-feed-cache-transient.php' );
+    require_once( ABSPATH . WPINC . '/class-wp-simplepie-file.php' );
+    require_once( ABSPATH . WPINC . '/class-wp-simplepie-sanitize-kses.php' );
+
+    $feed = new SimplePie();
+
+    $feed->set_sanitize_class( 'WP_SimplePie_Sanitize_KSES' );
+    // We must manually overwrite $feed->sanitize because SimplePie's
+    // constructor sets it before we have a chance to set the sanitization class
+    $feed->sanitize = new WP_SimplePie_Sanitize_KSES();
+
+    $feed->set_cache_class( 'WP_Feed_Cache' );
+    $feed->set_file_class( 'WP_SimplePie_File' );
+
+    $feed->set_feed_url( $url );
+    /** This filter is documented in wp-includes/class-wp-feed-cache-transient.php */
+    $feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 12 * HOUR_IN_SECONDS, $url ) );
+    /**
+     * Fires just before processing the SimplePie feed object.
+     *
+     * @since 3.0.0
+     *
+     * @param object $feed SimplePie feed object (passed by reference).
+     * @param mixed  $url  URL of feed to retrieve. If an array of URLs, the feeds are merged.
+     */
+    do_action_ref_array( 'wp_feed_options', array( &$feed, $url ) );
+    $feed->init();
+    $feed->set_output_encoding( get_option( 'blog_charset' ) );
+
+    // if ( $feed->error() ) {
+    //     return new WP_Error( 'simplepie-error', $feed->error() );
+    // }
+
+    return $feed;
 }
 ?>
