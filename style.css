@@ -20,6 +20,7 @@ body.blog{
     /*background-position:0 50px,0 50px;*/
     background-repeat:repeat-x,repeat;
 }
+.display{display:none}
 
 /*logo*/
 .logoImg{padding-right:4px}
