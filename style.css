@@ -98,13 +98,17 @@ body.blog{
 .index-list .media .media-body .media-about{
 	color:#919191;
 }
-.index-list .media .media-body button{padding:0}
+.index-list .media .media-body button.btn-link{padding:0}
 .index-list .media .media-body img{max-width:100%}
-.index-list .media .media-body .images-box img.col-xs-6{
-	padding:4px 0 0 4px;
+.index-list .media .media-body>img{width:80%}
+.index-list .media .media-body .images-box .col-xs-6{
+	background:no-repeat center center;
+	background-size:cover;
 	height:138px;
+	box-shadow:inset -4px 4px #f1f1f1;
 }
-
+.index-list .media .media-object{transition:all 0.6s !important}
+.index-list .media .media-object:hover{transform:rotate(35deg)}
 /*footer*/
 .footer{
 	padding-top:20px;

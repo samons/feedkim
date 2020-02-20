@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php bloginfo('template_url')?>/style.css">
-
+<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/image/favicon.ico" type="image/x-icon"/>
 <!--[if lt IE 9]>
   <script src="//apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
   <script src="//apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
