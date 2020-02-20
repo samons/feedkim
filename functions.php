@@ -24,6 +24,7 @@ remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email');
 *   form：http://www.360doc.com/content/17/1105/10/57493_701026541.shtml
 */
 add_filter('xmlrpc_enabled', '__return_false'); 
+
 // 开启缩略图功能
 add_theme_support('post-thumbnails');
 
@@ -73,6 +74,23 @@ function feedkim_file_exists($file){
     }else{// 本地文件
         return file_exists($file);
     }
+}
+/**
+ * 解析字符串里所有的图片
+ * //blog.csdn.net/tangjuntangjun/article/details/80937455
+ * @since  2020-2-20
+ * @param  String  $str 字符串
+ * @return Boolean or array
+ * $array[0]:带img标签的所有的图片，$array[1]:所有图片的URL地址
+ */
+function feedkim_get_images($str){
+    $preg = '/<img.*?src=[\"|\']?(.*?)[\"|\']?\s.*?>/i';
+    preg_match_all($preg, $str, $array);
+    if ($array[0] == null) {
+        return null;
+    }else{
+        return $array;
+    }   
 }
 /**
  * 解析RSS函数，系统自带的，可以输出object

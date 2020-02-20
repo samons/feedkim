@@ -3,7 +3,7 @@
 Theme Name: feed.KIM阅读主题
 Theme URI: https://feed.kim/
 Author: 紫铜炉
-Author URI: https://www.annanzi.com/
+Author URI: https://feed.kim/
 Description: feed.kim，个人的feed浏览阅读器。本主题借助wordpress平台，使用模版的方式快速搭建起一个完整的feed(RSS)阅读器，为个人用户提供完善的平台支持。
 Version: 1.0
 License: 
@@ -19,6 +19,7 @@ body.blog{
 	background-image:url("image/shadow_light.png"),url("image/pixels.png");
     /*background-position:0 50px,0 50px;*/
     background-repeat:repeat-x,repeat;
+    font-family:Microsoft YaHei,Arial;
 }
 .display{display:none}
 
@@ -65,7 +66,7 @@ body.blog{
 .index-list>div{
 	background-color:#a4a4a4;
 	background-color:rgba(0,0,0,0.25);
-	padding-top:40px;
+	padding-top:70px;
 	padding-bottom:10px;
 	min-height:100vh;
 }
@@ -79,9 +80,34 @@ body.blog{
 	border-radius: 4px;
 	background-color:#f1f1f1;
 }
+.index-list .media{
+	text-align:justify;
+}
+.index-list .media .media-left img{
+	text-align:right;
+	width: 32px;
+	height: auto;
+	border: 2px solid #ccc;
+	border-color: rgba(20,20,20,0.05);
+	border-radius: 50%;
+}
+.index-list .media .media-body .media-heading{
+	font-weight:700;
+	line-height: 1.25em;
+}
+.index-list .media .media-body .media-about{
+	color:#919191;
+}
+.index-list .media .media-body button{padding:0}
+.index-list .media .media-body img{max-width:100%}
+.index-list .media .media-body .images-box img.col-xs-6{
+	padding:4px 0 0 4px;
+	height:138px;
+}
 
 /*footer*/
 .footer{
 	padding-top:20px;
 	text-align:center;
 }
+.float-right{float:right}
