@@ -30,11 +30,12 @@
 		// print_r($feed);
 		// echo('</pre>');
 		$prePage = get_option('posts_per_page');//单页显示文章数
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 0;//当前页数
+		$paged = ($_POST['feedKimPaged']) ? $_POST['feedKimPaged'] : 0;//当前页数
 		$pageCount = count($feed->get_items());//文章总数
+		$pagedNum = $prePage * $paged;//文章开始第几篇
 
 		echo ('<ul>');
-		foreach ($feed->get_items($paged,$prePage) as $item){
+		foreach ($feed->get_items($pagedNum,$prePage) as $item){
 			$author = ($item->get_author()) ? $item->get_author()->get_name() : null; 
 			$timeID = $item->get_date('YmdgiA');//跳窗ID
 			$description = $item->get_description();//获取RSS的des
@@ -96,17 +97,36 @@
 			</div>
 			<?php
 			echo "</li>";
-		}
+		}//end foreach $feed
+		//分页，最后用JQ隐藏了，为了无限下拉
+		$havepages = $pageCount-$prePage;
+		if($havepages>0){
+			$PagedAll = ceil($pageCount/$prePage) - 1;
+			$PrePagedNum = $paged - 1;//前一页
+			$NextPagedNum = $paged + 1;//后一页
 		?>
 		<li>
 			<nav>
-			  <ul class="pager">
-			    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim');?></a></li>
-    			<li class="next"><a href="#"><?php _e('下一页','feedkim');?> <span aria-hidden="true">&rarr;</span></a></li>
-			  </ul>
+			  <ul class="pager"><form method="POST" action="" role="form">
+			  	<input type="text" value="<?php echo $_POST['feedUrl']?>" name="feedUrl" class="display">
+			  	
+			  	<?php if($PrePagedNum >= 0):?>
+			  	<li class="previous">
+			  		<button type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $PrePagedNum;?>"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim').',';?></button>
+			  	</li>
+				<?php endif?>
+
+				<?php if($NextPagedNum <= $PagedAll):?>
+				<li class="next">
+			  		<button type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $NextPagedNum;?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></button>
+			  	</li>
+    			<?php endif?>
+
+			  </form></ul>
 			</nav>
 		</li>
 		<?php
+		}//end pages nav
 		echo ('</ul>');
 	}
 ?>
