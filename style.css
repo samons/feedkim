@@ -21,6 +21,12 @@ body.blog{
     background-repeat:repeat-x,repeat;
     font-family:Microsoft YaHei,Arial;
 }
+@media (min-width: 1200px){
+	body.home .container,
+	body.blog .container{
+		width:1000px;
+	}
+}
 .display{display:none}
 
 /*logo*/
@@ -63,9 +69,11 @@ body.blog{
 }
 
 /*.index-list*/
-.index-list>div{
+.index-list{
 	background-color:#a4a4a4;
 	background-color:rgba(0,0,0,0.25);
+}
+.index-list>div{
 	padding-top:70px;
 	padding-bottom:10px;
 	min-height:100vh;
@@ -74,7 +82,8 @@ body.blog{
 .index-list .left{color:#eee}
 /*.index-list list*/
 .index-list .list ul{margin:0;padding:0;list-style-type: none;}
-.index-list .list ul li{
+.index-list .list ul li,
+.index-list .right .widget{
 	padding: 15px;
 	margin-bottom: 10px;
 	border-radius: 4px;
@@ -109,6 +118,16 @@ body.blog{
 }
 .index-list .media .media-object{transition:all 0.6s !important}
 .index-list .media .media-object:hover{transform:rotate(35deg)}
+/*right*/
+.index-list .right{
+	padding-left:0;
+}
+.index-list .right h5{
+	margin-top: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	font-weight: 700;
+}
 /*footer*/
 .footer{
 	padding-top:20px;

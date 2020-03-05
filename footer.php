@@ -12,7 +12,13 @@
 <script src="<?php bloginfo('template_url')?>/js/jquery.min.js"></script>
 <script src="<?php bloginfo('template_url')?>/js/bootstrap.min.js"></script>
 <script src="<?php bloginfo('template_url')?>/js/feedkim.js"></script>
-
+<!-- 侧栏下拉 JS -->
+<script src="<?php bloginfo('template_url')?>/js/theia-sticky-sidebar.js"></script>
+<script type="text/javascript">
+	jQuery('.sidebar').theiaStickySidebar({
+	      additionalMarginTop: 80
+	});
+</script>
 </body>
 </html>
 <!-- 网页打开时间：<?php timer_stop(1); ?>秒 -->
