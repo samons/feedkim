@@ -109,7 +109,7 @@
 		<li id="pager">
 			<nav>
 			  <ul class="pager"><form method="POST" action="" role="form">
-			  	<input type="text" value="<?php echo $_POST['feedUrl']?>" name="feedUrl" class="display">
+			  	<input type="text" value="<?php echo $_POST['feedUrl']?>" name="feedUrl" class="display" id="feedUrl">
 			  	
 			  	<?php if($PrePagedNum >= 0):?>
 			  	<li class="previous">

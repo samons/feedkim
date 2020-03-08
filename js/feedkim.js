@@ -28,9 +28,16 @@ $(document).ready(function() {
 		});
 	});
 	//侧栏跟随滚动
-	jQuery('.sidebar').theiaStickySidebar({
+	$('.sidebar').theiaStickySidebar({
 	      additionalMarginTop: 80
 	});
+	//无限下拉测试,参考
+	//https://blog.csdn.net/qq_42249896/article/details/85343901
+	//https://www.cnblogs.com/pink-chen/p/10629642.html
+	$('#pager').mouseover(function() {
+		pullOnLoad();
+	});
+
 })
 
 //查找网址的ICO图标
@@ -44,4 +51,17 @@ function feedkim_findICO($url) {
 	}
 	$url = '//'+$url+'/'+'favicon.ico';
 	return $url;
+}
+//无限下拉相关
+function pullOnLoad() {
+	//var feedUrl = $('#feedUrl').val();
+    setTimeout(function () {
+        $.ajax({
+            type:'post',
+            data:{data:1},
+            success:function(data){
+            	$('#pager').before('<li>'+data.data+'</li>');
+            }
+        });
+    },500);
 }
