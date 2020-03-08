@@ -8,6 +8,7 @@
 		 * @return array $feed
 		 */
 		$feedUrls = explode(',',$_POST['feedUrl']);
+		$feedUrls = array_unique($feedUrls);//删除重复项
 	}
 
 	// 删除无效feedUrl
@@ -34,7 +35,7 @@
 		$pageCount = count($feed->get_items());//文章总数
 		$pagedNum = $prePage * $paged;//文章开始第几篇
 
-		echo ('<ul>');
+		echo '<ul id="masonry">';
 		foreach ($feed->get_items($pagedNum,$prePage) as $item){
 			$author = ($item->get_author()) ? $item->get_author()->get_name() : null; 
 			$timeID = $item->get_date('YmdgiA');//跳窗ID
@@ -43,7 +44,7 @@
 			$p = strip_tags($description);
 			$html_p = mb_substr($p,0,140);
 			$imagesArray = feedkim_get_images($description);//[0]所有图片[1]所有图片地址
-			echo "<li>";?>
+			echo '<li class="item">';?>
 
 			<div class="media">
 				<div class="media-left">
@@ -105,7 +106,7 @@
 			$PrePagedNum = $paged - 1;//前一页
 			$NextPagedNum = $paged + 1;//后一页
 		?>
-		<li>
+		<li id="pager">
 			<nav>
 			  <ul class="pager"><form method="POST" action="" role="form">
 			  	<input type="text" value="<?php echo $_POST['feedUrl']?>" name="feedUrl" class="display">
@@ -118,7 +119,7 @@
 
 				<?php if($NextPagedNum <= $PagedAll):?>
 				<li class="next">
-			  		<button type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $NextPagedNum;?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></button>
+			  		<button id="NextPagedNum" type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $NextPagedNum;?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></button>
 			  	</li>
     			<?php endif?>
 
@@ -127,6 +128,6 @@
 		</li>
 		<?php
 		}//end pages nav
-		echo ('</ul>');
+		echo '</ul>';
 	}
 ?>

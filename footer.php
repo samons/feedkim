@@ -11,14 +11,10 @@
 <!-- Bootstrap JS -->
 <script src="<?php bloginfo('template_url')?>/js/jquery.min.js"></script>
 <script src="<?php bloginfo('template_url')?>/js/bootstrap.min.js"></script>
-<script src="<?php bloginfo('template_url')?>/js/feedkim.js"></script>
-<!-- 侧栏下拉 JS -->
+<!-- 侧栏跟随 JS -->
 <script src="<?php bloginfo('template_url')?>/js/theia-sticky-sidebar.js"></script>
-<script type="text/javascript">
-	jQuery('.sidebar').theiaStickySidebar({
-	      additionalMarginTop: 80
-	});
-</script>
+<!-- 主题（控制侧栏跟随/文章无限下拉/图片加载等）JS -->
+<script src="<?php bloginfo('template_url')?>/js/feedkim.js"></script>
 </body>
 </html>
 <!-- 网页打开时间：<?php timer_stop(1); ?>秒 -->

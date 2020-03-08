@@ -27,6 +27,10 @@ $(document).ready(function() {
 			$('input[name=\"feedUrl\"]').val($thisUrl);
 		});
 	});
+	//侧栏跟随滚动
+	jQuery('.sidebar').theiaStickySidebar({
+	      additionalMarginTop: 80
+	});
 })
 
 //查找网址的ICO图标
