@@ -28,7 +28,9 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 			</div>
 		</div>
 		<div class="col-sm-7 list">
-			<?php get_template_part('index-list');//列表页面 ?>
+			<ul id="indexListUl">
+				<?php get_template_part('index-list');//列表页面 ?>
+			</ul>
 		</div>
 		<div class="col-sm-3 right sidebar">
 			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->

@@ -29,7 +29,7 @@ $(document).ready(function() {
 	});
 	//侧栏跟随滚动
 	$('.sidebar').theiaStickySidebar({
-	      additionalMarginTop: 80
+	      additionalMarginTop:70
 	});
 	//无限下拉测试,参考
 	//https://blog.csdn.net/qq_42249896/article/details/85343901
@@ -55,12 +55,17 @@ function feedkim_findICO($url) {
 //无限下拉相关
 function pullOnLoad() {
 	//var feedUrl = $('#feedUrl').val();
+	$list = $('#feedList').val();
+	$feedUrl = $('#feedUrl').val();
+	$ullis = $('#indexListUl').length();
     setTimeout(function () {
         $.ajax({
+        	url:$list,
             type:'post',
-            data:{data:1},
+            dataType:'html',
+            data:{feedKimPaged:8,feedUrl:$feedUrl},
             success:function(data){
-            	$('#pager').before('<li>'+data.data+'</li>');
+            	console.log(data);
             }
         });
     },500);

@@ -1,5 +1,5 @@
 <?php //首页基础列表页面
-	$feedUrls = array(get_bloginfo('comments_rss2_url'));
+	$feedUrls = get_bloginfo('comments_rss2_url');
 	if (isset($_POST['feedUrl'])) {
 		/**
 		 * 解析$_POST['feedUrl']值
@@ -27,15 +27,11 @@
 			print_r($feed->error());
 		echo ('</pre>');
 	}else{
-		// echo('<pre>');
-		// print_r($feed);
-		// echo('</pre>');
 		$prePage = get_option('posts_per_page');//单页显示文章数
 		$paged = ($_POST['feedKimPaged']) ? $_POST['feedKimPaged'] : 0;//当前页数
 		$pageCount = count($feed->get_items());//文章总数
 		$pagedNum = $prePage * $paged;//文章开始第几篇
 
-		echo '<ul id="masonry">';
 		foreach ($feed->get_items($pagedNum,$prePage) as $item){
 			$author = ($item->get_author()) ? $item->get_author()->get_name() : null; 
 			$timeID = $item->get_date('YmdgiA');//跳窗ID
@@ -109,7 +105,8 @@
 		<li id="pager">
 			<nav>
 			  <ul class="pager"><form method="POST" action="" role="form">
-			  	<input type="text" value="<?php echo $_POST['feedUrl']?>" name="feedUrl" class="display" id="feedUrl">
+			  	<input type="text" value="<?php echo $_POST['feedUrl'];?>" name="feedUrl" class="display" id="feedUrl">
+			  	<input type="text" value="<?php bloginfo('template_url')?>/ajax/list.php" name="feedList" class="display" id="feedList">
 			  	
 			  	<?php if($PrePagedNum >= 0):?>
 			  	<li class="previous">
@@ -128,6 +125,5 @@
 		</li>
 		<?php
 		}//end pages nav
-		echo '</ul>';
 	}
 ?>
