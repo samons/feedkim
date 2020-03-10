@@ -57,15 +57,15 @@ function pullOnLoad() {
 	//var feedUrl = $('#feedUrl').val();
 	$list = $('#feedList').val();
 	$feedUrl = $('#feedUrl').val();
-	$ullis = $('#indexListUl').length();
     setTimeout(function () {
         $.ajax({
         	url:$list,
             type:'post',
             dataType:'html',
-            data:{feedKimPaged:8,feedUrl:$feedUrl},
+            data:{feedKimPaged:8},
             success:function(data){
-            	console.log(data);
+            	var wrappedObj = $("<code></code>").append($(data));
+                console.log($(data).html());
             }
         });
     },500);
