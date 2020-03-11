@@ -1,15 +1,26 @@
-<?php //首页基础列表页面
-	$feedUrls = get_bloginfo('comments_rss2_url');
+<?php 
+	/**
+	 * 首页基础列表页面
+	 * 解析$_POST['feedUrl']值
+	 * @since 2020-3-11
+	 * @param $_POST['feedUrl'] or $_COOKIE['feedKimUrls']
+	 * @return array $feedUrls
+	 */
 	if (isset($_POST['feedUrl'])) {
-		/**
-		 * 解析$_POST['feedUrl']值
-		 * @since 2020-2-14
-		 * @param String $_POST['feedUrl']
-		 * @return array $feed
-		 */
+		$expire = time()+86400;//cookie记录时间
+		setcookie('feedKimUrls',$_POST['feedUrl']);
 		$feedUrls = explode(',',$_POST['feedUrl']);
 		$feedUrls = array_unique($feedUrls);//删除重复项
+	}elseif(!empty($_COOKIE['feedKimUrls'])){
+		$feedUrls = explode(',',$_COOKIE['feedKimUrls']);
+		$feedUrls = array_unique($feedUrls);//删除重复项
+	}else{
+		$feedUrls = array(get_bloginfo('comments_rss2_url'));
 	}
+	echo $_POST['feedUrl'];
+	echo $_COOKIE['feedKimUrls'];
+	setcookie('nfame','12242');
+	echo $_COOKIE['nfame'];
 
 	// 删除无效feedUrl
 	foreach ($feedUrls as $key => $value) {
@@ -28,7 +39,7 @@
 		echo ('</pre>');
 	}else{
 		$prePage = get_option('posts_per_page');//单页显示文章数
-		$paged = ($_POST['feedKimPaged']) ? $_POST['feedKimPaged'] : 0;//当前页数
+		$paged = ($_GET['feedKimPaged']) ? $_GET['feedKimPaged'] : 0;//当前页数
 		$pageCount = count($feed->get_items());//文章总数
 		$pagedNum = $prePage * $paged;//文章开始第几篇
 
@@ -102,7 +113,7 @@
 			$PrePagedNum = $paged - 1;//前一页
 			$NextPagedNum = $paged + 1;//后一页
 		?>
-		<li id="pager">
+		<li>
 			<nav>
 			  <ul class="pager"><form method="POST" action="" role="form">
 			  	<input type="text" value="<?php echo $_POST['feedUrl'];?>" name="feedUrl" class="display" id="feedUrl">
@@ -123,7 +134,27 @@
 			  </form></ul>
 			</nav>
 		</li>
+		<li>
+			<nav>
+			  <ul class="pager">
+	  	
+			  	<?php if($PrePagedNum >= 0):?>
+			  	<li class="previous">
+				  	<a href="<?php bloginfo('url'); ?>?feedKimPaged=<?php echo $PrePagedNum?>"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim').',';?></a>
+			  	</li>
+				<?php endif?>
+
+				<?php if($NextPagedNum <= $PagedAll):?>
+				<li class="next">
+			  		<a href="<?php bloginfo('url'); ?>?feedKimPaged=<?php echo $NextPagedNum?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></a>
+			  	</li>
+    			<?php endif?>
+
+			  </ul>
+			</nav>
+		</li>
 		<?php
+		echo '<pre>GET值：'.$_GET['feedKimPaged'].'<br>总页数：'.$PagedAll.'<br>上一页：'.$PrePagedNum.'<br>下一页：'.$NextPagedNum.'</pre>';
 		}//end pages nav
 	}
 ?>
