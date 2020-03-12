@@ -87,7 +87,8 @@
 							echo $imagesArray[0][0];
 						}else{
 							echo '<div class="images-box row">';
-							foreach ($imagesArray[1] as $imageUrl) {
+							$imagesArray3 = array_slice($imagesArray[1],0,3);
+							foreach ($imagesArray3 as $imageUrl) {
 								echo '<div class="col-md-4 col-xs-6" style="background-image:url('.$imageUrl.')"></div>';
 							}
 							echo '<span class="clearfix"></span></div>';
@@ -106,40 +107,19 @@
 			$PrePagedNum = $paged - 1;//前一页
 			$NextPagedNum = $paged + 1;//后一页
 		?>
-		<li>
-			<nav>
-			  <ul class="pager"><form method="POST" action="" role="form">
-			  	<input type="text" value="<?php echo $_POST['feedUrl'];?>" name="feedUrl" class="display" id="feedUrl">
-			  	<input type="text" value="<?php bloginfo('template_url')?>/ajax/list.php" name="feedList" class="display" id="feedList">
-			  	
-			  	<?php if($PrePagedNum >= 0):?>
-			  	<li class="previous">
-			  		<button type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $PrePagedNum;?>"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim').',';?></button>
-			  	</li>
-				<?php endif?>
-
-				<?php if($NextPagedNum <= $PagedAll):?>
-				<li class="next">
-			  		<button id="NextPagedNum" type="submit" class="btn btn-default" name="feedKimPaged" value="<?php echo $NextPagedNum;?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></button>
-			  	</li>
-    			<?php endif?>
-
-			  </form></ul>
-			</nav>
-		</li>
-		<li>
+		<li id="pagerNav" class="item">
 			<nav>
 			  <ul class="pager">
 	  	
 			  	<?php if($PrePagedNum >= 0):?>
 			  	<li class="previous">
-				  	<a href="<?php bloginfo('url'); ?>?feedKimPaged=<?php echo $PrePagedNum?>"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim').',';?></a>
+				  	<a href="<?php bloginfo('url'); ?>/?feedKimPaged=<?php echo $PrePagedNum?>"><span aria-hidden="true">&larr;</span> <?php _e('上一页','feedkim').',';?></a>
 			  	</li>
 				<?php endif?>
 
 				<?php if($NextPagedNum <= $PagedAll):?>
 				<li class="next">
-			  		<a href="<?php bloginfo('url'); ?>?feedKimPaged=<?php echo $NextPagedNum?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></a>
+			  		<a href="<?php bloginfo('url'); ?>/?feedKimPaged=<?php echo $NextPagedNum?>"><?php _e('下一页','feedkim').',';?> <span aria-hidden="true">&rarr;</span></a>
 			  	</li>
     			<?php endif?>
 

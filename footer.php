@@ -13,8 +13,11 @@
 <script src="<?php bloginfo('template_url')?>/js/bootstrap.min.js"></script>
 <!-- 侧栏跟随 JS -->
 <script src="<?php bloginfo('template_url')?>/js/theia-sticky-sidebar.js"></script>
+<!-- 无限下拉 JS -->
+<script src="<?php bloginfo('template_url')?>/js/infinitescroll.min.js"></script>
 <!-- 主题（控制侧栏跟随/文章无限下拉/图片加载等）JS -->
-<script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.3"></script>
+<script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.4"></script>
+
 <script>
     $(document).ready(function () {
         document.cookie = "cookieid=1; expires=60";

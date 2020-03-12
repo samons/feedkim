@@ -27,8 +27,8 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<?php } ?>
 			</div>
 		</div>
-		<div class="col-sm-7 list">
-			<ul id="indexListUl">
+		<div class="col-sm-7 list" id="indexListUl">
+			<ul>
 				<?php get_template_part('index-list');//列表页面 ?>
 			</ul>
 		</div>

@@ -31,6 +31,15 @@ $(document).ready(function() {
 	$('.sidebar').theiaStickySidebar({
 	      additionalMarginTop:70
 	});
+	//无线下拉控制
+	$('#indexListUl').infinitescroll({     //#content是包含所有图或块的容器
+	    navSelector  : "#pagerNav",   //导航的容器，成功后会被隐藏
+	    nextSelector : "#pagerNav .next a",  // 包含下一页链接的容器
+	    itemSelector : "li.item",  // 你将要取来的内容块
+	    debug : true, //调试的时候，可以打开
+	    maxPage : 100,
+	    animate : true //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+	});
 })
 
 //查找网址的ICO图标
