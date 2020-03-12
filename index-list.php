@@ -7,22 +7,15 @@
 	 * @return array $feedUrls
 	 */
 	if (isset($_POST['feedUrl'])) {
-		$expire = time()+86400;//cookie记录时间
-		setcookie('feedKimUrls',$_POST['feedUrl']);
 		$feedUrls = explode(',',$_POST['feedUrl']);
-		$feedUrls = array_unique($feedUrls);//删除重复项
-	}elseif(!empty($_COOKIE['feedKimUrls'])){
+	}elseif(isset($_COOKIE['feedKimUrls'])){
 		$feedUrls = explode(',',$_COOKIE['feedKimUrls']);
-		$feedUrls = array_unique($feedUrls);//删除重复项
 	}else{
 		$feedUrls = array(get_bloginfo('comments_rss2_url'));
 	}
-	echo $_POST['feedUrl'];
-	echo $_COOKIE['feedKimUrls'];
-	setcookie('nfame','12242');
-	echo $_COOKIE['nfame'];
 
 	// 删除无效feedUrl
+	$feedUrls = array_unique($feedUrls);//删除重复项
 	foreach ($feedUrls as $key => $value) {
 		if (!feedkim_file_exists($value)) {
 			unset($feedUrls[$key]);

@@ -1,3 +1,4 @@
+<?php get_template_part('setcookie');//获取cookie记录 ?>
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>

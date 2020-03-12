@@ -15,6 +15,15 @@
 <script src="<?php bloginfo('template_url')?>/js/theia-sticky-sidebar.js"></script>
 <!-- 主题（控制侧栏跟随/文章无限下拉/图片加载等）JS -->
 <script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.3"></script>
+<script>
+    $(document).ready(function () {
+        document.cookie = "cookieid=1; expires=60";
+        var result = document.cookie.indexOf("cookieid=") != -1;
+        if (!result) {
+            alert("浏览器未启用cookie,将无法正常浏览本网站,请打开：更多设置——隐私和个人数据——接受cookie，开启");
+        }
+    });
+</script>
 
 </body>
 </html>

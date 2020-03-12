@@ -31,13 +31,6 @@ $(document).ready(function() {
 	$('.sidebar').theiaStickySidebar({
 	      additionalMarginTop:70
 	});
-	//无限下拉测试,参考
-	//https://blog.csdn.net/qq_42249896/article/details/85343901
-	//https://www.cnblogs.com/pink-chen/p/10629642.html
-	$('#pager').mouseover(function() {
-		pullOnLoad();
-	});
-
 })
 
 //查找网址的ICO图标
@@ -51,22 +44,4 @@ function feedkim_findICO($url) {
 	}
 	$url = '//'+$url+'/'+'favicon.ico';
 	return $url;
-}
-//无限下拉相关
-function pullOnLoad() {
-	//var feedUrl = $('#feedUrl').val();
-	$list = $('#feedList').val();
-	$feedUrl = $('#feedUrl').val();
-    setTimeout(function () {
-        $.ajax({
-        	url:$list,
-            type:'post',
-            dataType:'html',
-            data:{feedKimPaged:8},
-            success:function(data){
-            	var wrappedObj = $("<code></code>").append($(data));
-                console.log($(data).html());
-            }
-        });
-    },500);
 }
