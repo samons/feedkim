@@ -31,7 +31,7 @@ add_theme_support('post-thumbnails');
 // 开启主题的小工具
 if( function_exists('register_sidebar') ) {
     register_sidebar(array(
-        'name' => __('文章右侧栏','feedkim'),
+        'name' => __('文章列表右侧栏','feedkim'),
         'description'   => __('放置在文章页面右侧，随滚动','feedkim'),
         'class' => 'index-sider',
         'before_widget' => '<aside class="widget %2$s">',
@@ -45,6 +45,14 @@ if( function_exists('register_sidebar') ) {
     'feeds' => 'feeds'
     ));
 }
+
+/**
+ * 控制文章摘要显示字数
+ * @since  2020-3-18
+ */
+function new_excerpt_length($length){return 140;}
+add_filter("excerpt_length", "new_excerpt_length");
+
 /**
  * 判断文件是否存在，支持本地及远程文件
  * //blog.csdn.net/qiuyu6958334/article/details/100144549

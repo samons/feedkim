@@ -27,9 +27,26 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<?php } ?>
 			</div>
 		</div>
-		<div class="col-sm-7 list" id="indexListUl">
-			<ul>
-				<?php get_template_part('index-list');//列表页面 ?>
+		<div class="col-sm-7 list">
+			<ul id="indexListUl">
+				<?php if (is_home() && (isset($_COOKIE['feedKimUrls']) || isset($_POST['feedUrl']))) {//feed列表
+					get_template_part('index-list');
+				}else{//正常发文列表
+					if (have_posts()) {
+						while ( have_posts() ) {
+							the_post();
+							get_template_part('content', get_post_format()); 
+						};
+					};?>
+					<li id="pagerNav">
+						<nav>
+						  <ul class="pager">
+						    <li class="previous"><?php previous_posts_link(__('上一页','limiwu')) ?></li>
+						    <li class="next" id="older_posts"><?php next_posts_link(__('下一页','limiwu')) ?></li>
+						  </ul>
+						</nav>
+					</li><!-- pagerNav end -->
+				<?php }	//列表页面 ?>
 			</ul>
 		</div>
 		<div class="col-sm-3 right sidebar">
