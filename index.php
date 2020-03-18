@@ -9,7 +9,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
 				<?php //RSS源，对应的是feeds菜单
 				if ( has_nav_menu('feeds')) { ?>
-				<form method="POST" action="" role="form">
+				<form method="POST" action="<?php echo home_url('/');?>" role="form">
 				<?php 
 					wp_nav_menu( array(  
 					'theme_location' => 'feeds',
@@ -24,29 +24,27 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<!-- input，获取用，不显示 -->
 				<input class="display" type="text" name="feedUrl" value="">
 				</form>
-				<?php } ?>
+				<?php echo 'cookie:'.$_COOKIE['feedKimUrls'].'<br>'.'post:'.$_POST['feedUrl'];} ?>
 			</div>
 		</div>
 		<div class="col-sm-7 list">
 			<ul id="indexListUl">
-				<?php if (is_home() && (isset($_COOKIE['feedKimUrls']) || isset($_POST['feedUrl']))) {//feed列表
-					get_template_part('index-list');
-				}else{//正常发文列表
-					if (have_posts()) {
-						while ( have_posts() ) {
-							the_post();
-							get_template_part('content', get_post_format()); 
-						};
-					};?>
-					<li id="pagerNav">
-						<nav>
-						  <ul class="pager">
-						    <li class="previous"><?php previous_posts_link(__('上一页','limiwu')) ?></li>
-						    <li class="next" id="older_posts"><?php next_posts_link(__('下一页','limiwu')) ?></li>
-						  </ul>
-						</nav>
-					</li><!-- pagerNav end -->
-				<?php }	//列表页面 ?>
+				<?php
+				if($_COOKIE['feedKimUrls']){
+					if ($_COOKIE['feedKimUrls'] == home_url('/') || $_POST['feedUrl'] == home_url('/')) {
+						get_template_part('index-list');//正常发文列表
+					}else{
+						get_template_part('index-feed');//调用feed
+					}
+				}elseif($_POST['feedUrl']){
+					if ($_POST['feedUrl'] == home_url('/')) {
+						get_template_part('index-list');//正常发文列表
+					}else{
+						get_template_part('index-feed');//调用feed
+					}
+				}else{
+					get_template_part('index-list');//正常发文列表
+				}?>
 			</ul>
 		</div>
 		<div class="col-sm-3 right sidebar">

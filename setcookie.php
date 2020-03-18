@@ -6,7 +6,7 @@
 	 * @param $_POST['feedUrl']
 	 * @return $_COOKIE['feedKimUrls']
 	 */
-	if (isset($_POST['feedUrl'])) {
+	if (isset($_POST['feedUrl']) && $_POST['feedUrl'] != home_url('/')) {
 		setcookie('feedKimUrls',$_POST['feedUrl'],time()+86400);
 	}
 ?>
