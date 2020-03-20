@@ -41,7 +41,7 @@ $(document).ready(function() {
 	    animate : true //当有新数据加载进来的时候，页面是否有动画效果，默认没有
 	});
 	//侧栏输入框增加bootstrap style
-	$('.widget .postform').addClass('form-control');
+	$('.postform').addClass('form-control');
 	$('#s').parent().addClass('input-group');
 	$('.screen-reader-text').remove();
 	$('#s').addClass('form-control');
