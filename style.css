@@ -127,9 +127,158 @@ body.blog{
 .index-list .right h5{
 	margin-top: 0;
 	padding-bottom: 10px;
-	border-bottom: 1px solid #ddd;
+	width: 100%;
+	border-bottom: 1px solid #dedede;
 	font-weight: 700;
 }
+/*widget*/
+.widget{text-align: justify}
+.widget h5::before{
+	content:'\e103';
+	font-size:85%;
+	margin-right:6px;
+	color:#b3e5fc;
+}
+.widget_tag_cloud h5.glyphicon::before{content:'\e042'}
+.widget_categories h5.glyphicon::before,
+.widget_archive h5.glyphicon::before{content:'\e012'}
+.widget_recent_entries h5.glyphicon::before{content:'\270f'}
+.widget_rss h5.glyphicon::before{content:'\e144'}
+.widget_recent_comments h5.glyphicon::before{content:'\e111'}
+.widget_pages h5.glyphicon::before{content:'\e143'}
+.widget_meta h5.glyphicon::before{content:'\e019'}
+.widget_search h5.glyphicon::before{content:'\e003'}
+.widget_categories h5.glyphicon::before{content:'\e118'}
+.widget_calendar h5.glyphicon::before{content:'\e109'}
+
+.widget_recent_entries ul,
+.widget_rss ul,
+.widget_recent_comments ul{
+	list-style: none;
+	padding-left:6px;
+}
+.widget_recent_entries li a::before,
+.widget_rss li a::before{
+	position:relative;
+	margin-bottom:2px;
+	margin-right:8px;
+	content: '';
+	width:8px;
+	height:8px;
+	display:inline-block;
+	border-radius:50% 50% 0;
+	box-shadow:0 1px 2px #757575;
+	text-decoration: none;
+}
+.widget_recent_entries li:nth-child(n) a::before,
+.widget_rss li:nth-child(n) a::before{
+	border:1px solid #fd5f00;
+}
+.widget_recent_entries li:nth-child(n) a:hover,
+.widget_rss li:nth-child(n) a:hover{
+	color:#fd5f00;
+}
+.widget_recent_entries li:nth-child(2n) a::before,
+.widget_rss li:nth-child(2n) a::before{
+	border:1px solid #00a635;
+}
+.widget_recent_entries li:nth-child(2n) a:hover,
+.widget_rss li:nth-child(2n) a:hover{
+	color:#00a635;
+}
+.widget_recent_entries li:nth-child(3n) a::before,
+.widget_rss li:nth-child(3n) a::before{
+	border:1px solid #b92400;
+}
+.widget_recent_entries li:nth-child(3n) a:hover,
+.widget_rss li:nth-child(3n) a:hover{
+	color:#b92400;
+}
+.widget_recent_entries li:nth-child(4n) a::before,
+.widget_rss li:nth-child(4n) a::before{
+	border:1px solid #00a9da;
+}
+.widget_recent_entries li:nth-child(4n) a:hover,
+.widget_rss li:nth-child(4n) a:hover{
+	color:#00a9da;
+}
+.widget_rss .rssSummary{
+	margin-bottom: 10px;
+	font-size:85%;
+	color: #888;
+}
+.widget_search label,
+.widget_categories label,
+.rss-widget-icon,
+.rss-date,
+.post-date{
+	display:none;
+}
+.widget_meta ul,
+.widget_categories ul,
+.widget_nav_menu ul{
+	list-style: none;
+	display: inline-block;
+	padding-left:0;
+	margin-bottom:0px;
+	text-align:left;
+}
+.tagcloud{text-align:left}
+.tag-cloud-link{font-size:14px !important}
+.widget_categories li,
+.widget_tag_cloud a,
+.widget_nav_menu li{
+	margin: 0 3px 3px 0;
+	padding: 1px 9px 3px;
+	display: inline-block;
+	border-radius: 1px;
+	color:#666;
+	background:#ededed;
+	border:1px solid #cccccc;
+}
+.widget_categories a,
+.widget_tag_cloud a,
+.widget_nav_menu a{
+	color: #666;
+}
+.widget_categories li:hover,
+.widget_tag_cloud a:hover,
+.widget_nav_menu li:hover{
+	background-color:#428bca;
+	color:#fff;
+}
+.widget_categories li:hover a,
+.widget_tag_cloud a:hover,
+.widget_nav_menu a:hover{
+	text-decoration: none;
+	color:#fff;
+}
+#wp-calendar{
+	margin:0 auto;
+	width:100%;
+}
+#wp-calendar td,
+#wp-calendar th {
+	padding: 5px 3px;
+	text-align:center;
+}
+#wp-calendar caption {
+	padding: 6px 0;
+	text-align:center;
+}
+#wp-calendar tbody a{
+	color:#fff;
+	background:#428bca;
+	border-radius:4px;
+	padding:2px 4px;
+}
+#wp-calendar tbody td:hover{
+	background:transparent;
+}
+#wp-calendar tbody td:hover a{
+	background:#999;
+}
+#wp-calendar tfoot{display:none}
 /*footer*/
 .footer{
 	padding-top:20px;

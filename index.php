@@ -30,7 +30,9 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 		<div class="col-sm-7 list">
 			<ul id="indexListUl">
 				<?php
-				if($_POST['feedUrl']){
+				if($_GET['s'] || $_GET['cat']){
+					get_template_part('index-list');//正常发文列表
+				}elseif($_POST['feedUrl']){
 					if ($_POST['feedUrl'] == home_url('/')) {
 						get_template_part('index-list');//正常发文列表
 					}else{

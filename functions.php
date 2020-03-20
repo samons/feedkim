@@ -28,6 +28,9 @@ add_filter('xmlrpc_enabled', '__return_false');
 // 开启缩略图功能
 add_theme_support('post-thumbnails');
 
+// 删除前台顶部条
+add_filter('show_admin_bar', '__return_false');
+
 // 开启主题的小工具
 if( function_exists('register_sidebar') ) {
     register_sidebar(array(
@@ -36,7 +39,7 @@ if( function_exists('register_sidebar') ) {
         'class' => 'index-sider',
         'before_widget' => '<aside class="widget %2$s">',
         'after_widget' => '</aside>',
-        'before_title' => '<h5>',
+        'before_title' => '<h5 class="glyphicon">',
         'after_title' => '</h5>'
     ));
     register_nav_menus( array(
