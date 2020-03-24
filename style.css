@@ -70,7 +70,7 @@ body.blog{
 /*.index-list*/
 .index-list{
 	background-color:#a4a4a4;
-	background-color:rgba(0,0,0,0.25);
+	background-color:rgba(0,0,0,0.45);
 }
 .index-list>div{
 	padding-top:70px;
@@ -289,6 +289,12 @@ body.blog{
 }
 .top-input .top-box-button .btn{padding:6px}
 .top-input .top-box-button .btn span{color:#565656}
+/*single-box*/
+.single-box{
+	padding-left:30px;
+	background-color:#fff;
+}
+.single-box>h1:first-child{margin-top:0}
 /*footer*/
 .footer{
 	padding-top:20px;
