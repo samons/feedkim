@@ -33,7 +33,9 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				if( is_user_logged_in() ) {//登录用户
 					get_template_part('user-logged-in');
 				}
-				if($_GET['s'] || $_GET['cat']){
+				if(is_tag() || is_category() || is_archive()){
+					get_template_part('index-list');//正常发文列表
+				}elseif($_GET['s'] || $_GET['cat']){
 					get_template_part('index-list');//正常发文列表
 				}elseif($_POST['feedUrl']){
 					if ($_POST['feedUrl'] == home_url('/')) {
