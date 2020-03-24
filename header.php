@@ -1,4 +1,5 @@
 <?php get_template_part('setcookie');//获取cookie记录 ?>
+<?php get_template_part('fk_new_post');//快速发文函数 ?>
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>
