@@ -13,7 +13,8 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && $_POST['fk_content'] ){
 
     $fk_new_post = array(
     	'post_category' => array($_POST['cat']),
-    	'post_content' => $fk_content
+    	'post_content' => $fk_content,
+        'comment_status' => 'open'
     );
 
     if ($_POST['fk_title']) {//标题

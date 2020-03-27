@@ -34,7 +34,9 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 					the_post();
 					the_content();
 				}
+				comments_template();
 			?>
+
 		</div>
 		<div class="clearfix visible-xs-block"></div>
 	</div>

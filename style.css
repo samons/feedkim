@@ -292,9 +292,16 @@ body.blog{
 /*single-box*/
 .single-box{
 	padding-left:30px;
+	padding-right:30px;
 	background-color:#fff;
 }
 .single-box>h1:first-child{margin-top:0}
+/*comment*/
+#accordion .children{
+	margin-top:20px
+}
+#accordion .media-body>p:first-child{margin-bottom:0}
+#accordion .media-body small{color:#aaa}
 /*footer*/
 .footer{
 	padding-top:20px;
