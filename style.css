@@ -293,13 +293,28 @@ body.blog{
 .single-box{
 	padding-left:30px;
 	padding-right:30px;
+	text-align: justify;
 	background-color:#fff;
+	color: #191e23;
+	line-height:1.8;
 }
 .single-box>h1:first-child{margin-top:0}
-/*comment*/
-#accordion .children{
-	margin-top:20px
+.single-box h1,
+.single-box h2,
+.single-box h3,
+.single-box h4,
+.single-box h5,
+.single-box h6{
+	font-weight: 600
 }
+.single-box p{
+	font-family:"Noto Serif","Microsoft YaHei","Arial";
+	margin-top: 1em;
+	margin-bottom:1em;
+	font-size:16px;
+}
+/*comment*/
+#accordion .children{margin-top:10px}
 #accordion .media-body>p:first-child{margin-bottom:0}
 #accordion .media-body small{color:#aaa}
 /*footer*/
