@@ -305,7 +305,8 @@ body.blog{
 .single-box h4,
 .single-box h5,
 .single-box h6{
-	font-weight: 600
+	font-weight: 600;
+	margin-bottom: 20px;
 }
 .single-box p{
 	font-family:"Noto Serif","Microsoft YaHei","Arial";

@@ -89,6 +89,72 @@ function feedkim_get_images($str){
     }   
 }
 /**
+ * 通过文章ID或者作者相关信息并输出
+ * 
+ * @since  2020-4-1
+ * @param  $post->ID
+ * @return echo <a>author name
+ */
+function feedkim_the_author($ID,$email=''){
+    if(get_the_author_meta('user_url',$ID)){
+        echo '<a target="_blank" rel="nofollow" href="';
+        the_author_meta('user_url',$ID);
+        echo '">';
+        the_author_meta('user_nicename',$ID);
+        echo '</a>';
+    }elseif(get_the_author_meta('user_email',$ID) && $email == 'email'){
+        echo '<a target="_blank" rel="nofollow" href="mailto:';
+        the_author_meta('user_email',$ID);
+        echo '">';
+        the_author_meta('user_nicename',$ID);
+        echo '</a>';
+    }else{
+        the_author_meta('user_nicename',$ID);
+    }
+}
+/**
+ * WordPress 修改时间的显示格式为XXX秒、分钟、小时、天前
+ * form www.chendexin.com/archives/137.html
+ */
+function past_date(){
+    $suffix=__('前','limiwu');
+    $endtime='2419200';
+    $day = __('天','limiwu');
+    $hour = __('小时','limiwu');
+    $minute = __('分钟','limiwu');
+    $second = __('秒','limiwu');
+    if ($_SERVER['REQUEST_TIME'])
+        $now_time = $_SERVER['REQUEST_TIME'];
+    else
+        $now_time = time();
+        $m = 60; // 一分钟
+        $h = 3600; //一小时有3600秒
+        $d = 86400; // 一天有86400秒
+        $endtime = (int)$endtime; // 结束时间
+        $post_time = get_post_time('U', true);
+        $past_time = $now_time - $post_time; // 文章发表至今经过多少秒
+        if($past_time < $m){ //小于1分钟
+            $past_date = $past_time . $second;
+        }else if ($past_time < $h){ //小于1小时
+            $past_date = $past_time / $m;
+            $past_date = floor($past_date);
+            $past_date .= $minute;
+        }else if ($past_time < $d){ //小于1天
+            $past_date = $past_time / $h;
+            $past_date = floor($past_date);
+            $past_date .= $hour;
+        }else if ($past_time < $d*8){
+            $past_date = $past_time / $d;
+            $past_date = floor($past_date);
+            $past_date .= $day;
+        }else{
+            echo get_post_time('Y-m-d');
+            return;
+        }
+    echo $past_date . $suffix;
+}
+add_filter('the_time', 'past_date');
+/**
  * 解析RSS函数，系统自带的，可以输出object
  * //zhangzifan.com/wordpress-fetch_feed.html
  * //zhangzifan.com/wordpress-feed-rss.html
