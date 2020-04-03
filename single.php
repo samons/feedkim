@@ -45,6 +45,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 					echo ' @ ';
 					the_time('Y-m-d h:s');
 				?>
+				<span class="glyphicon glyphicon-edit"></span> <?php edit_post_link(__('编辑','feedkim'));?>
 				</li>
 			</ol>
 			<?php

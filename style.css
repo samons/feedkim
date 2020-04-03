@@ -308,15 +308,21 @@ body.blog{
 	font-weight: 600;
 	margin-bottom: 20px;
 }
-.single-box p{
+.single-box{
 	font-family:"Noto Serif","Microsoft YaHei","Arial";
-	margin-top: 1em;
-	margin-bottom:1em;
 	font-size:16px;
 }
+.single-box p{
+	margin-top: 1em;
+	margin-bottom:1em;
+}
+.single-box blockquote p{
+	letter-spacing:0.1em;
+}
+
 /*comment*/
 #accordion .children{margin-top:10px}
-#accordion .media-body>p:first-child{margin-bottom:0}
+#accordion .media-body>p:first-child{margin-top:0;margin-bottom:0;}
 #accordion .media-body small{color:#aaa}
 /*footer*/
 .footer{

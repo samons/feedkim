@@ -155,6 +155,35 @@ function past_date(){
 }
 add_filter('the_time', 'past_date');
 /**
+ * 给每个RSSfeed里面增加最新文章列表
+ * //www.wpdaxue.com/how-to-add-custom-content-to-wordpress-feed.html
+ * 
+ * @since  2020-4-3
+ * @param  $content
+ * @return $conten.$after
+ */
+function feedkim_add_content_feed_newList($content) {
+    $after = '<h3>'.__('最新文章','feedkim').'</h3><ul>';
+    $recent_posts = wp_get_recent_posts(6);
+    foreach( $recent_posts as $recent ){
+        $after .= '<li><a target="_blank" href="'.get_permalink($recent["ID"]).'">'.$recent["post_title"].'</a></li>';
+    }
+
+    $after .= '</ul>';
+    return $content . $after;
+}
+add_filter('the_content_feed', 'feedkim_add_content_feed_newList');
+/**
+ * 修改wordpress网站登录界面
+ * 隐藏H1界面，背板变更为默认的
+ * @since  2020-4-3
+ *
+**/
+function feedkim_custom_loginlogo() {
+  echo '<style type="text/css">h1 a {display:none !important}body{background-image:url('.get_bloginfo('template_directory').'/image/pixels.png)}</style>';
+}
+add_action('login_head', 'feedkim_custom_loginlogo');
+/**
  * 解析RSS函数，系统自带的，可以输出object
  * //zhangzifan.com/wordpress-fetch_feed.html
  * //zhangzifan.com/wordpress-feed-rss.html
