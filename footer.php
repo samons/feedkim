@@ -27,7 +27,16 @@
         }
     });
 </script>
-
+<!-- 代码高亮 JS -->
+<?php if(is_single() || is_page()):?>
+    <script src="<?php bloginfo('template_url')?>/js/prettify.js"></script>
+    <script>
+        $(function(){
+            $("pre").addClass("prettyprint");
+            prettyPrint();
+        });
+    </script>
+<?php endif?>
 </body>
 </html>
 <!-- 网页打开时间：<?php timer_stop(1); ?>秒 -->
