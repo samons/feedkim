@@ -117,12 +117,12 @@ function feedkim_the_author($ID,$email=''){
  * form www.chendexin.com/archives/137.html
  */
 function past_date(){
-    $suffix=__('前','limiwu');
+    $suffix=__('前','feedkim');
     $endtime='2419200';
-    $day = __('天','limiwu');
-    $hour = __('小时','limiwu');
-    $minute = __('分钟','limiwu');
-    $second = __('秒','limiwu');
+    $day = __('天','feedkim');
+    $hour = __('小时','feedkim');
+    $minute = __('分钟','feedkim');
+    $second = __('秒','feedkim');
     if ($_SERVER['REQUEST_TIME'])
         $now_time = $_SERVER['REQUEST_TIME'];
     else
@@ -183,6 +183,27 @@ function feedkim_custom_loginlogo() {
   echo '<style type="text/css">h1 a {display:none !important}body{background-image:url('.get_bloginfo('template_directory').'/image/pixels.png)}</style>';
 }
 add_action('login_head', 'feedkim_custom_loginlogo');
+/**
+ * 让主题增加识别webp格式图片
+ * 
+ * @author //blog.csdn.net/sunboy_2050/article/details/103722422
+ * @since 2020-4-4
+ */
+//添加可以上传
+function feedkim_add_webp( $array ) {
+    $array['webp'] = 'image/webp';
+    return $array;
+}
+add_filter('mime_types','feedkim_add_webp',10,1);
+//添加媒体识别
+function feedkim_add_image_webp($result, $path) {
+    $info = @getimagesize($path);
+    if($info['mime'] == 'image/webp') {
+        $result = true;
+    }
+    return $result;
+}
+add_filter('file_is_displayable_image','feedkim_add_image_webp',10,2);
 /**
  * 解析RSS函数，系统自带的，可以输出object
  * //zhangzifan.com/wordpress-fetch_feed.html
