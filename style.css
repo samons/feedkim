@@ -289,6 +289,8 @@ body.blog{
 }
 .top-input .top-box-button .btn{padding:6px}
 .top-input .top-box-button .btn span{color:#565656}
+.top-input .bbs-author{padding-right:4px !important}
+.top-input .bbs-author,.bbs-email{float:left !important}
 /*single-box*/
 .single-box{
 	padding-left:30px;

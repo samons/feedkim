@@ -3,11 +3,11 @@ if ( post_password_required() )
 	return;
 ?>
 <?php if(have_comments()): ?>
-<br><h4 id="comment"><span class="glyphicon glyphicon-comment"></span>&nbsp;<?php _e('评论内容','feedkim')?></h4><hr>
+<br><h4 id="comments"><span class="glyphicon glyphicon-comment"></span>&nbsp;<?php _e('评论内容','feedkim')?></h4><hr>
 <!-- 评论内容 -->
 <div class="panel-group comment-texts" id="accordion" role="tablist" aria-multiselectable="true">
 <?php function feedkim_comment($comment, $args, $depth){ $GLOBALS['comment'] = $comment; ?>
-<div class="media">
+<div class="media" id="comment-<?php comment_ID();?>">
   <div class="media-left">
     <?php comment_reply_link(array_merge( $args, array('reply_text' => get_avatar(get_comment_author_email(),48),'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
   </div>
@@ -31,7 +31,7 @@ if ( post_password_required() )
 	</div>
 	<?php endif; ?>
 <?php endif; // have_comments() ?>
-<!-- 下面是之前的文章 -->
+
 <div class="comment-post" id="respond">
 
 <?php if ( !comments_open() ) :
@@ -47,19 +47,19 @@ if ( post_password_required() )
 	<div class="form-group">
 		<label for="comment" class="col-sm-2 control-label"><?php _e('评论内容','feedkim') ?>(*)</label>
 		<div class="col-sm-10">
-			<textarea name="comment" id="message comment" rows="3" tabindex="1" class="form-control"></textarea>
+			<textarea name="comment" id="message comment" rows="3" tabindex="1" class="form-control" required></textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="author" class="col-sm-2 control-label"><?php _e('称呼','feedkim') ?>(*)</label>
 		<div class="col-sm-10">
-			<input type="text" name="author" id="author" placeholder="<?php _e('您的称呼','feedkim') ?>" value="<?php echo $comment_author; ?>" tabindex="2" class="form-control">
+			<input type="text" name="author" id="author" placeholder="<?php _e('您的称呼','feedkim') ?>" value="<?php echo $comment_author; ?>" tabindex="2" class="form-control" required>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email" class="col-sm-2 control-label">Email(*)</label>
 		<div class="col-sm-10">
-			<input type="email" name="email" id="email" placeholder="@" value="<?php echo $comment_author_email; ?>" tabindex="3" class="form-control">
+			<input type="email" name="email" id="email" placeholder="@" value="<?php echo $comment_author_email; ?>" tabindex="3" class="form-control" required>
 		</div>
 	</div>
 	<div class="form-group">
@@ -73,7 +73,7 @@ if ( post_password_required() )
 		<label for="comment" class="col-sm-2 control-label">
 		<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php" target="_blank"><?php echo $user_identity; ?></a>:</label>
 		<div class="col-sm-10">
-			<textarea name="comment" id="message comment" rows="3" tabindex="2" class="form-control"></textarea>
+			<textarea name="comment" id="message comment" rows="3" tabindex="2" class="form-control" required></textarea>
 		</div>
 	</div>
 <?php endif; ?>
