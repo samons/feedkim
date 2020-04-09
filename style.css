@@ -21,11 +21,11 @@ body.blog{
     background-repeat:repeat-x,repeat;
     font-family:Microsoft YaHei,Arial;
 }
-@media (min-width: 1200px){
+/*@media (min-width: 1200px){
 	body .container{
 		width:1000px;
 	}
-}
+}*/
 .display{display:none}
 
 /*logo*/
@@ -41,14 +41,14 @@ body.blog{
 .left-feeds .feeds-div .btn{
 	color:#fff;
 }
-.left-feeds .feeds-div .btn{padding:0}
-/*.left-feeds .feeds-div a:hover{text-decoration:none}*/
-.left-feeds .feeds-div>ul{
+.feeds-div .btn{padding:0}
+/*.feeds-div a:hover{text-decoration:none}*/
+.feeds-div>ul{
 	list-style-type:none;
 	padding-left:0.8em;
 	font-weight:700;
 }
-.left-feeds .feeds-div ul.feed-menu li{
+.feeds-div ul.feed-menu li{
 	margin:3px auto;
 	padding:3px 5px;
 	width:100%;
@@ -58,10 +58,10 @@ body.blog{
 	background-color:#d8d8d8;
 	background-color:rgba(0,0,0,0.25);
 }
-.left-feeds .feeds-div ul.sub-menu{
+.feeds-div ul.sub-menu{
 	padding-left:20px;
 }
-.left-feeds .feeds-div .favicon-ico{
+.feeds-div .favicon-ico{
 	margin-right:4px;
 	width:14px;
 	height:auto;
@@ -281,7 +281,7 @@ body.blog{
 #wp-calendar tfoot{display:none}
 /*top-input*/
 .top-input textarea,
-.top-input .input-group{margin-bottom:7px}
+.top-input .input-group{margin-bottom:15px}
 .top-input .glyphicon{
 	margin:0 5px;
 	font-size:16px;
@@ -321,7 +321,10 @@ body.blog{
 .single-box blockquote p{
 	letter-spacing:0.1em;
 }
-
+.single-box img{
+	max-width:100%;
+	height:auto;
+}
 /*comment*/
 #accordion .children{margin-top:10px}
 #accordion .media-body>p:first-child{margin-top:0;margin-bottom:0;}
@@ -337,3 +340,6 @@ pre.prettyprint{border-color:#ccc;padding:8px}
 .wp-block-file{padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;border-left: 5px solid #eee;}
 .wp-block-file .wp-block-file__button{color: #333;background-color:#fff;border: 1px solid #ccc;}
 .wp-block-file .wp-block-file__button:hover{background-color:#337ab7}
+figure.aligncenter{text-align:center}
+figure.alignleft{text-align:left}
+figure.alignright{text-align:right}

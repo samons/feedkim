@@ -8,7 +8,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 ?>
 <div class="container">
 	<div class="row index-list">
-		<div class="col-sm-2 left-feeds sidebar">
+		<div class="col-sm-2 left-feeds sidebar hidden-xs">
 			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
 				<?php //RSS源，对应的是feeds菜单
 				if ( has_nav_menu('feeds')) { ?>
@@ -41,7 +41,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 					$thisCateUrl = get_category_link($thisCateID);
 				?>
 				<li><a href="<?php echo $thisCateUrl;?>" target="_blank" title="<?php echo $thisCate;?>"><?php echo $thisCate;?></a></li>
-				<li class="active">
+				<li class="active hidden-xs">
 				<?php 
 					$thisAuthorID = get_post($post->ID)->post_author;
 					feedkim_the_author($thisAuthorID);
@@ -60,7 +60,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 			?>
 
 		</div>
-		<div class="clearfix visible-xs-block"></div>
+		<div class="clearfix visible-xs-block hidden-xs"></div>
 	</div>
 </div>
 

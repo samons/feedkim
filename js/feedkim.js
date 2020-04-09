@@ -47,6 +47,10 @@ $(document).ready(function() {
 	$('#s').addClass('form-control');
 	$('#searchsubmit').addClass('btn btn-default');
 	$('#searchsubmit').wrap('<span class="input-group-btn"></span>');
+	//手机浏览时隐藏分类、文章、页面
+	$('.feeds-div .menu-item-object-category').addClass('hidden-xs');
+	$('.feeds-div .menu-item-object-page').addClass('hidden-xs');
+	$('.feeds-div .menu-item-object-post').addClass('hidden-xs');
 })
 
 //查找网址的ICO图标

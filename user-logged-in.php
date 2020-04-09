@@ -18,13 +18,13 @@
 		</span>
 	</div>
 	<div class="form-inline">
-		<div class="form-group">
+		<div class="form-group hidden-xs">
 			<label class="control-label" for="fk_tags"><span class="glyphicon glyphicon-tags"></span></label>
 		</div>
 		<div class="form-group">
 			<input type="text" name="fk_tags" class="form-control" placeholder="<?php _e('多个标签请以逗号分隔','feedkim');?>" tabindex="10">
 		</div>
-		<div class="form-group">
+		<div class="form-group hidden-xs">
 			<label class="control-label" for="cat"><span class="glyphicon glyphicon-duplicate"></span></label>
 		</div>
 		<div class="form-group">
@@ -34,6 +34,7 @@
 			<a class="btn btn-default" href="<?php echo admin_url().'media-new.php'; ?>" role="button" target="_blank" title="<?php _e('增加多媒体文件','feedkim');?>" tabindex="20"><span class="glyphicon glyphicon-picture"></span></a>
 			<a class="btn btn-default" href="<?php echo admin_url().'post-new.php'; ?>" role="button" target="_blank" title="<?php _e('新建长篇博文','feedkim');?>" tabindex="21"><span class="glyphicon glyphicon-fullscreen"></span></a>
 		</div>
+		<div class="clearfix"></div>
 	</div>
 </form>
 </li>
