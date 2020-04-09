@@ -55,7 +55,12 @@
 				</div>
 				<div class="media-body">
 				    <h5 class="media-heading"><?php echo $item->get_title();?></h5>
-				    <h6 class="media-about"><span class="glyphicon glyphicon-user"></span> <?php echo $author;//作者?> <span class="glyphicon glyphicon-dashboard"></span> <?php echo $item->get_date('Y-m-d g:i A');//发布时间?><span class="glyphicon glyphicon-menu-down float-right"></span></h6>
+				    <h6 class="media-about">
+				    <?php 
+				    	if($author){
+				    		echo '<span class="glyphicon glyphicon-user"></span> '.$author.' ';//作者
+				    }?>
+				    	<span class="glyphicon glyphicon-dashboard"></span> <?php echo $item->get_date('Y-m-d g:i A');//发布时间?><span class="glyphicon glyphicon-menu-down float-right"></span></h6>
 				    <?php
 				    if ($number<=180) {
 				    	echo '<p>'.$p.'</p>';
