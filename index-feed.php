@@ -39,7 +39,8 @@
 		foreach ($feed->get_items($pagedNum,$prePage) as $item){
 			$author = ($item->get_author()) ? $item->get_author()->get_name() : null; 
 			$timeID = $item->get_date('YmdgiA');//跳窗ID
-			$description = $item->get_description();//获取RSS的des
+			//$description = $item->get_description();//获取RSS的des
+			$description = $item->get_content();//获取RSS的des
 			$number = strlen($description);
 			$p = strip_tags($description);
 			$html_p = mb_substr($p,0,140);
@@ -89,7 +90,7 @@
 							echo '<div class="images-box row">';
 							$imagesArray3 = array_slice($imagesArray[1],0,3);
 							foreach ($imagesArray3 as $imageUrl) {
-								echo '<div class="col-md-4 col-xs-6" style="background-image:url('.$imageUrl.')"></div>';
+								echo '<div class="col-md-4 col-xs-6" style="background-image:url('.$imageUrl.'),url('.get_template_directory_uri().'/image/pixels.png)"></div>';
 							}
 							echo '<span class="clearfix"></span></div>';
 						}
