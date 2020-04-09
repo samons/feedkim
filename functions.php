@@ -12,10 +12,17 @@ require_once(TEMPLATEPATH . '/option-setting.php');
 // 增加小工具（widget）:暂不使用，后期再继续研究
 //require_once(TEMPLATEPATH . '/widget/test.php' );
 /**
- * 去除window._wpemojiSettings
- * WordPress版本 zhangwenbao.com/wordpress-window-wpemojisettings.html
- * 查看Wordpress源文件的时候，会看到head头部加载了一大片window._wpemojiSettings开头的JS和CSS代码，这是用于支持emjo表情的脚本。对于大部分国内站长来说，这个是十分鸡肋的功能
+ * 去除WordPress相关鸡肋抬头
 **/
+add_filter('rest_enabled', '__return_false');
+add_filter('rest_jsonp_enabled', '__return_false');
+add_filter('xmlrpc_enabled', '__return_false');
+remove_action('wp_head','wp_resource_hints',2);
+remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+remove_action( 'wp_head', 'rsd_link');
+remove_action( 'wp_head', 'wlwmanifest_link');
+remove_action( 'wp_head', 'wp_generator');
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script');
 remove_action( 'admin_print_styles', 'print_emoji_styles');
 remove_action( 'wp_head', 'print_emoji_detection_script', 7);
