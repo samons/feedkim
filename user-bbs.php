@@ -7,7 +7,7 @@
 ?>
 <li class="top-input">
 <?php
-	query_posts('page_id=167');
+	query_posts(get_option('feedkim_bbs'));
 	while(have_posts()):the_post();?>
 		<p><a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" target="_blank"><?php the_title(); ?></a><?php _e('已有留言','feedkim');comments_popup_link(0,1,'%',',');_e('条','feedkim'); ?></p>
 <?php

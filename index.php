@@ -33,9 +33,10 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<?php
 				if( is_user_logged_in() ) {
 					get_template_part('user-logged-in');//快速发文
-					get_template_part('user-bbs');//BBS
 				}else{
-					get_template_part('user-bbs');//BBS
+					if(get_option('feedkim_bbs')){
+						get_template_part('user-bbs');//BBS
+					}
 				}
 				if(is_tag() || is_category() || is_archive()){
 					get_template_part('index-list');//正常发文列表

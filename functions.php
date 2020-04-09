@@ -7,6 +7,8 @@
  * @package feedkim
  * @author feedkim/910109610@qq.com
  */
+// 主题相关设置参数
+require_once(TEMPLATEPATH . '/option-setting.php');
 /**
  * 去除window._wpemojiSettings
  * WordPress版本 zhangwenbao.com/wordpress-window-wpemojisettings.html
@@ -19,6 +21,11 @@ remove_action( 'wp_print_styles', 'print_emoji_styles');
 remove_filter( 'the_content_feed', 'wp_staticize_emoji');
 remove_filter( 'comment_text_rss', 'wp_staticize_emoji');
 remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email');
+//WordPress 5.0+移除 block-library CSS
+function fanly_remove_block_library_css() {
+    wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_enqueue_scripts', 'fanly_remove_block_library_css', 100 );
 /*
 *   关闭pingback功能
 *   form：http://www.360doc.com/content/17/1105/10/57493_701026541.shtml
@@ -204,6 +211,40 @@ function feedkim_add_image_webp($result, $path) {
     return $result;
 }
 add_filter('file_is_displayable_image','feedkim_add_image_webp',10,2);
+/**
+ * 控制评论的间隔时间为60秒
+ * 
+ * @author //www.wuzuowei.net/8624.html
+ * @since 2020-4-9
+ */
+function feedkim_comment_flood_filter($flood_control,$time_last,$time_new){
+    $seconds = 60;//时间间隔
+    if(($time_new-$time_last)<$seconds){
+        return true;
+    }else{
+        return false;
+    }
+}
+add_filter('comment_flood_filter','feedkim_comment_flood_filter',10,3);
+/**
+ * WordPress 添加额外选项字段到常规设置页面
+ * @author www.wpdaxue.com/add-field-to-general-settings-page.html
+ * @since 2020-4-9
+ */
+$new_general_setting = new new_general_setting();
+class new_general_setting {
+    function new_general_setting( ) {
+        add_filter( 'admin_init' , array( &$this , 'register_fields' ) );
+    }
+    function register_fields() {
+        register_setting( 'general', 'feedkim_get_ICP', 'esc_attr' );
+        add_settings_field('fav_color', '<label for="feedkim_get_ICP">'.__('备案号','feedkim').'</label>' , array(&$this, 'fields_html') , 'general' );
+    }
+    function fields_html() {
+        $value = get_option('feedkim_get_ICP','');
+        echo '<input type="text" id="feedkim_get_ICP" name="feedkim_get_ICP" value="'.$value.'" />';
+    }
+}
 /**
  * 解析RSS函数，系统自带的，可以输出object
  * //zhangzifan.com/wordpress-fetch_feed.html

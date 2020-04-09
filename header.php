@@ -32,6 +32,8 @@
 		wp_title( '|', true, 'right' ); 
 }?></title>
 
+<?php get_template_part('option-seo');//SEO ?>
+
 </head>
 
 <body <?php body_class();?>>
