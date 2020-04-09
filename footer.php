@@ -4,19 +4,19 @@
         <a href="//beian.miit.gov.cn/" rel="nofollow" target="_blank"><?php echo get_option( 'feedkim_get_ICP' );?></a> <!--网站备案号-->
         <span class="glyphicon glyphicon-tree-deciduous"></span> <a href="<?php bloginfo('rdf_url'); ?>" target="_blank">RSS</a> 
         Powered By <a href="//cn.wordpress.org" rel="nofollow" target="_blank">WordPress</a>. Theme by <a href="//feed.kim" target="_blank">feed.kim</a>
-        <?php _e('商业授权版','feedkim' );?>
+        <?php _e('商业授权版','feedkim');?>
     </p>
 </footer>
 
 <!-- Bootstrap JS -->
-<script src="<?php bloginfo('template_url')?>/js/jquery.min.js"></script>
-<script src="<?php bloginfo('template_url')?>/js/bootstrap.min.js"></script>
+<script src="<?php feedkim_echo_CDN_URL('jquery.min.js')?>"></script>
+<script src="<?php feedkim_echo_CDN_URL('bootstrap.min.js')?>"></script>
 <!-- 侧栏跟随 JS -->
-<script src="<?php bloginfo('template_url')?>/js/theia-sticky-sidebar.js"></script>
+<script src="<?php feedkim_echo_CDN_URL('theia-sticky-sidebar.js')?>"></script>
 <!-- 无限下拉 JS -->
-<script src="<?php bloginfo('template_url')?>/js/infinitescroll.min.js"></script>
+<script src="<?php feedkim_echo_CDN_URL('infinitescroll.min.js')?>"></script>
 <!-- 主题（控制侧栏跟随/文章无限下拉/图片加载等）JS -->
-<script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.4"></script>
+<script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.5"></script>
 
 <script>
     $(document).ready(function () {
@@ -37,6 +37,8 @@
         });
     </script>
 <?php endif?>
+<?php echo get_option('feedkim_bottom_JQ');?>
+<?php wp_footer(); ?>
 </body>
 </html>
 <!-- 网页打开时间：<?php timer_stop(1); ?>秒 -->

@@ -9,6 +9,8 @@
  */
 // 主题相关设置参数
 require_once(TEMPLATEPATH . '/option-setting.php');
+// 增加小工具（widget）:暂不使用，后期再继续研究
+//require_once(TEMPLATEPATH . '/widget/test.php' );
 /**
  * 去除window._wpemojiSettings
  * WordPress版本 zhangwenbao.com/wordpress-window-wpemojisettings.html
@@ -227,7 +229,7 @@ function feedkim_comment_flood_filter($flood_control,$time_last,$time_new){
 }
 add_filter('comment_flood_filter','feedkim_comment_flood_filter',10,3);
 /**
- * WordPress 添加额外选项字段到常规设置页面
+ * 增加备案号到常规字段里
  * @author www.wpdaxue.com/add-field-to-general-settings-page.html
  * @since 2020-4-9
  */
@@ -244,6 +246,41 @@ class new_general_setting {
         $value = get_option('feedkim_get_ICP','');
         echo '<input type="text" id="feedkim_get_ICP" name="feedkim_get_ICP" value="'.$value.'" />';
     }
+}
+/**
+ * CDN加速
+ * 直接输出返回CDN的URL地址
+ *
+ * @author annanzi/910109610@qq.com
+ * @since 2020-4-9
+ * @return url
+ */
+function feedkim_echo_CDN_URL($name,$type='js'){
+    $options = array(
+        'style.css' => 'feedkim_style_css_url',
+        'jquery.min.js' => 'feedkim_jquery_url',
+        'bootstrap.min.css' => 'feedkim_bootstrap_css_url',
+        'bootstrap.min.js' => 'feedkim_bootstrap_js_url',
+        'other' => 'feedkim_other_js_url'
+    );
+    if (!empty($options[$name])) {
+        $url = $options[$name];
+    }else{
+        $url = $options['other'];
+    }
+
+    if($name == 'style.css'){
+        $blog_url = get_bloginfo('template_url').'/'.$name;
+    }else{
+        $blog_url = get_bloginfo('template_url').'/'.$type.'/'.$name;
+    }
+    if (get_option($url)) {
+        $test_url = get_option($url).'/'.$name;
+        // if (@fopen($test_url,'r')) {
+        $blog_url = $test_url;
+        // }
+    }
+    echo $blog_url;
 }
 /**
  * 解析RSS函数，系统自带的，可以输出object

@@ -6,11 +6,12 @@
 <meta charset="<?php bloginfo('charset');?>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <?php wp_head(); ?>
+<?php echo get_option('feedkim_top_JQ');?>
 
 <?php if(is_single() || is_page()):?>
     <link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/prettify.css">
 <?php endif?>
-<link rel="stylesheet" href="<?php bloginfo('template_url')?>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php feedkim_echo_CDN_URL('bootstrap.min.css','css')?>">
 <link rel="stylesheet" href="<?php bloginfo('template_url')?>/style.css?v=1.6">
 <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/image/favicon.ico" type="image/x-icon"/>
 <!--[if lt IE 9]>
