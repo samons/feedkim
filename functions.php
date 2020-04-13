@@ -116,16 +116,16 @@ function feedkim_the_author($ID,$email=''){
         echo '<a target="_blank" rel="nofollow" href="';
         the_author_meta('user_url',$ID);
         echo '">';
-        the_author_meta('user_nicename',$ID);
+        the_author_meta('display_name',$ID);
         echo '</a>';
     }elseif(get_the_author_meta('user_email',$ID) && $email == 'email'){
         echo '<a target="_blank" rel="nofollow" href="mailto:';
         the_author_meta('user_email',$ID);
         echo '">';
-        the_author_meta('user_nicename',$ID);
+        the_author_meta('display_name',$ID);
         echo '</a>';
     }else{
-        the_author_meta('user_nicename',$ID);
+        the_author_meta('display_name',$ID);
     }
 }
 /**
