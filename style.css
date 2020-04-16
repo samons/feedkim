@@ -321,6 +321,10 @@ body.blog{
 .single-box blockquote p{
 	letter-spacing:0.1em;
 }
+.single-box blockquote cite{
+	font-size: 85%;
+	color: #888;
+}
 .single-box img{
 	max-width:100%;
 	height:auto;
