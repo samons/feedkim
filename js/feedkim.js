@@ -51,6 +51,8 @@ $(document).ready(function() {
 	$('.feeds-div .menu-item-object-category').addClass('hidden-xs');
 	$('.feeds-div .menu-item-object-page').addClass('hidden-xs');
 	$('.feeds-div .menu-item-object-post').addClass('hidden-xs');
+	//RSS订阅超链接增加新增窗口
+	$('.rsswidget').attr({target:"_blank",rel:"nofollow"});
 })
 
 //查找网址的ICO图标

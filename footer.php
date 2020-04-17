@@ -16,7 +16,7 @@
 <!-- 无限下拉 JS -->
 <script src="<?php feedkim_echo_CDN_URL('infinitescroll.min.js')?>"></script>
 <!-- 主题（控制侧栏跟随/文章无限下拉/图片加载等）JS -->
-<script src="<?php bloginfo('template_url')?>/js/feedkim.js?v=1.5"></script>
+<script src="<?php bloginfo('template_url')?>/js/feedkim.min.js"></script>
 
 <script>
     $(document).ready(function () {
