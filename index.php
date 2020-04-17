@@ -48,7 +48,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 						get_template_part('index-feed');//调用feed
 					}
 				}elseif($_COOKIE['feedKimUrls']){
-					if ($_COOKIE['feedKimUrls'] == home_url() || $_COOKIE['feedKimUrls'] == home_url('/')) {
+					if ($_COOKIE['feedKimUrls'].'/' == home_url('/') || $_COOKIE['feedKimUrls'] == home_url('/')) {
 						get_template_part('index-list');//正常发文列表
 					}else{
 						get_template_part('index-feed');//调用feed
