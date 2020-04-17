@@ -13,6 +13,16 @@ $(document).ready(function() {
 				$feedButtonVal = $feedButtonVal + ',' + $thisUrl;
 			}
 		}
+		$(this).each(function() {
+			//x上限，y下限     
+			var x = 9;
+			var y = 0;
+			var $rand = parseInt(Math.random() * (x - y + 1) + y);
+			if($rand>0){
+				$(this).after('<span>'+$rand+'</span>');
+			}
+		});
+		//$(this).after('<span>10</span>');
 		$(this).after('<button type="submit" class="btn btn-link" name="feedbutton" value="'
 			+$feedButtonVal+'">'+$(this).text()+'</button>');
 		$(this).hide();
