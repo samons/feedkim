@@ -2,7 +2,7 @@
 	/**
 	 * 解析feed基础列表页面
 	 * 解析$_POST['feedUrl']值
-	 * @since 2020-3-11
+	 * @since 2020-4-17
 	 * @param $_POST['feedUrl'] or $_COOKIE['feedKimUrls']
 	 * @return array $feedUrls
 	 */
@@ -22,14 +22,20 @@
 		}
 	}
 
+	// 为空就跳出
+	if(empty($feedUrls)){
+		echo '<pre>'.__('数据源信息为空','feedkim').'</pre>';
+		return;
+	};
+
 	//object,RSS内容集合
 	$feed = feedkim_fetch_feed($feedUrls);
 
 	if ($feed->error()) {
-		echo ('<pre>');
-		echo "<p>RSS源无法读取，请删除</p>";
-			print_r($feed->error());
-		echo ('</pre>');
+		echo '<pre>';
+		echo '<p>'.__('RSS源无法读取，请删除','feedkim').'</p>';
+		print_r($feed->error());
+		echo '</pre>';
 	}else{
 		$prePage = get_option('posts_per_page');//单页显示文章数
 		$paged = ($_GET['feedKimPaged']) ? $_GET['feedKimPaged'] : 0;//当前页数

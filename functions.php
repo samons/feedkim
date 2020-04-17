@@ -75,14 +75,23 @@ add_filter("excerpt_length", "new_excerpt_length");
 /**
  * 判断文件是否存在，支持本地及远程文件
  * //blog.csdn.net/qiuyu6958334/article/details/100144549
- * @since  2020-2-12
+ * @since  2020-4-17
  * @param  String  $file 文件路径
  * @return Boolean
  */
 function feedkim_file_exists($file){
     if(strtolower(substr($file, 0, 4))=='http'){// 远程文件
+        stream_context_set_default( [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
+        ]);
         $header = get_headers($file, true);
-        return isset($header[0]) && (strpos($header[0], '200') || strpos($header[0], '304'));
+        //return isset($header[0]) && (strpos($header[0], '200') || strpos($header[0], '304'));
+        if (isset($header[0]) && (strpos($header[0], '200') || strpos($header[0], '304'))){
+            return true;
+        }
     }else{// 本地文件
         return file_exists($file);
     }
