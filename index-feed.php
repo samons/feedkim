@@ -60,7 +60,7 @@
 				    </a>
 				</div>
 				<div class="media-body">
-				    <h5 class="media-heading"><?php echo $item->get_title();?></h5>
+				    <h4 class="media-heading"><?php echo $item->get_title();?></h4>
 				    <h6 class="media-about">
 				    <?php 
 				    	if($author){
