@@ -11,14 +11,17 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				if ( has_nav_menu('feeds')) { ?>
 				<form method="POST" action="<?php echo home_url('/');?>" role="form">
 				<?php 
-					wp_nav_menu( array(  
+					wp_nav_menu(array(
 					'theme_location' => 'feeds',
 					'container'  => 'div',
 					'container_id'  => 'feeds-div',
 					'container_class' => 'feeds-div',
 					'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-					'menu_class' => 'feed-menu',
-				),); ?>
+					'menu_class' => 'feed-menu'
+					//'after' => '<span>1</span>'
+				),);
+				require_once('feeds-menu-tree.php');
+				?>
 				<!-- 图标地址，获取用，不显示 -->
 				<span class="display" id="myico"><?php bloginfo('template_url'); ?>/image/favicon.ico</span>
 				<!-- input，获取用，不显示 -->
@@ -30,6 +33,12 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 		<div class="col-sm-9 col-md-7 list">
 			<ul id="indexListUl">
 				<?php
+				$feedsTree = feedkim_get_nav_menu_tree('feeds');
+				echo '<pre>';
+				var_dump(parse_url('http://localhost/wordpress/?p=178'));
+				print_r($feedsTree);
+				echo '</pre>';				
+				//以上为测试结构
 				if(is_user_logged_in()){
 					get_template_part('user-logged-in');//快速发文
 				}else{

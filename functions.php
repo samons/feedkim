@@ -299,6 +299,64 @@ function feedkim_echo_CDN_URL($name,$type='js'){
     echo $blog_url;
 }
 /**
+ * 扁平化菜单，获取相应的树模型
+ * //c7sky.com/get-tree-like-array-of-wordpress-nav-menu.html
+ * 
+ * @param  $location 菜单名称
+ * @since  2020-4-22
+ * @return $menu
+ */
+function feedkim_get_nav_menu_tree( $location ) {
+    $locations = get_nav_menu_locations();
+    $menu_id = $locations[$location] ;
+    $menu_object = wp_get_nav_menu_object($menu_id);
+    $menu_items = wp_get_nav_menu_items($menu_object->term_id);
+
+    _wp_menu_item_classes_by_context($menu_items);
+
+    $menu = array();
+    $submenus = array();
+
+    foreach ($menu_items as $m) {
+        $m->children = array();
+        if (!$m->menu_item_parent) {
+            $menu[$m->ID] = $m;
+        } else {
+            $submenus[$m->ID] = $m;
+            if (isset($menu[$m->menu_item_parent])) {
+                $menu[$m->menu_item_parent]->children[$m->ID] = &$submenus[$m->ID];
+            } else {
+                $submenus[$m->menu_item_parent]->children[$m->ID] = $submenus[$m->ID];
+            }
+        }
+    }
+    return $menu;
+}
+/**
+ * 查找网址对应的图标
+ * 
+ * @since  2020-4-22
+ * @return $returnUrl
+ */
+function feedkim_parse_url($net,$n='host') {
+    $returnUrl = parse_url($net);
+    switch ($n) {
+        case 'scheme':
+            return $returnUrl["scheme"];
+            break;
+        case 'path':
+            return $returnUrl["path"];
+            break;
+        case 'query':
+            return $returnUrl["query"];
+            break;
+        default:
+            return $returnUrl["host"];
+            break;
+    }
+    // '//'+$returnUrl+'/'+'favicon.ico';
+}
+/**
  * 解析RSS函数，系统自带的，可以输出object
  * //zhangzifan.com/wordpress-fetch_feed.html
  * //zhangzifan.com/wordpress-feed-rss.html
