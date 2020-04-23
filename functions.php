@@ -354,7 +354,6 @@ function feedkim_parse_url($net,$n='host') {
             return $returnUrl["host"];
             break;
     }
-    // '//'+$returnUrl+'/'+'favicon.ico';
 }
 /**
  * 解析RSS函数，系统自带的，可以输出object

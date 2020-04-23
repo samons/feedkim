@@ -6,8 +6,8 @@
 	 * @param $_POST['feedUrl'] or $_COOKIE['feedKimUrls']
 	 * @return array $feedUrls
 	 */
-	if (isset($_POST['feedUrl'])) {
-		$feedUrls = explode(',',$_POST['feedUrl']);
+	if (isset($_POST['feedbutton'])) {
+		$feedUrls = explode(',',$_POST['feedbutton']);
 	}elseif(isset($_COOKIE['feedKimUrls'])){
 		$feedUrls = explode(',',$_COOKIE['feedKimUrls']);
 	}else{
