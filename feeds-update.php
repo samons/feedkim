@@ -15,12 +15,40 @@ if ($_POST['feedsUpdate']=='feedsUpdate') {
   $table_wp_postmeta = $wpdb->prefix . "postmeta";
 
   $sql = "SELECT `post_id` FROM ".$table_wp_postmeta." WHERE `meta_value` LIKE 'custom' AND `meta_key` LIKE '_menu_item_type'";
-  $wpdb_IDS = $wpdb->get_results($sql);
-  for ($i=0; $i<count($wpdb_IDS); $i++) { 
-    $wpdb_ID_array[] = $wpdb_IDS[$i]->post_id;//ID所有集合数组
+  $results = $wpdb->get_results($sql);
+  for ($i=0; $i<count($results); $i++) { 
+    $wpdb_IDs[] = $results[$i]->post_id;//单数组，结构{[]=>ID}
   }
 
-  var_dump($wpdb_ID_array);
+  foreach ($wpdb_IDs as $key) {
+    $sql = "SELECT `meta_value` FROM ".$table_wp_postmeta." WHERE `meta_key` = '_menu_item_url' AND `post_id`=".$key;
+    $results = $wpdb->get_results($sql);
+    $value = $results[0]->meta_value;
+    if ($value == home_url('/') || $value == home_url()) {
+      continue;
+    }else{
+      $feedkim_IDtoUrl[$key] = $value;//单数组，结构{ID=>URL}
+    }
+  }
+
+  foreach ($feedkim_IDtoUrl as $ID => $URL) {
+    $feed = feedkim_fetch_feed($URL);
+    if($feed->error()){
+      continue;
+    }else{
+      foreach ($feed->get_items(0,1) as $item){
+        $update = $item->get_date();
+        $feedkim_IDtoUpdate[$ID] = $update;//单数组，结构{ID=>update}
+      }
+    }
+  }
+  //跟新数据表中wp_Posts中post-date信息
+  foreach ($feedkim_IDtoUpdate as $ID => $update) {
+    $wpdb->update($table_wp_posts,array('post-date'=>date('Y-m-d h:i:s',$update)),array('ID'=>$ID));
+  }
+  //关闭数据库操作
+  $wpdb->flush();
+  var_dump($feedkim_IDtoUpdate);
 }
 
 //刷新按钮界面

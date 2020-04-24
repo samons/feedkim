@@ -32,6 +32,8 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				// echo '<pre>';
 				// print_r($feedsTreesss);
 				// echo '</pre>';
+				//echo 'post:'.$_POST['feedbutton'].'<br>COOKIE:'.$_COOKIE['feedKimUrls'];
+
 				//以上为测试结构
 				if(is_user_logged_in()){
 					get_template_part('user-logged-in');//快速发文
@@ -44,8 +46,8 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 					get_template_part('index-list');//正常发文列表
 				}elseif($_GET['s'] || $_GET['cat']){
 					get_template_part('index-list');//正常发文列表
-				}elseif($_POST['feedUrl']){
-					if ($_POST['feedUrl'] == home_url('/')) {
+				}elseif($_POST['feedbutton']){
+					if ($_POST['feedbutton'] == home_url('/')) {
 						get_template_part('index-list');//正常发文列表
 					}else{
 						get_template_part('index-feed');//调用feed

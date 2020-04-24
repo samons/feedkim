@@ -8,6 +8,6 @@
 	 */
 	if (isset($_POST['feedbutton'])) {
 		setcookie('feedKimUrls',$_POST['feedbutton'],time()+86400);
-		setcookie('feedKimLastTime',date('y-m-d H:i'),time()+86400);
+		//setcookie('feedKimLastTime',date('y-m-d H:i'),time()+86400);
 	}
 ?>

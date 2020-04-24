@@ -1,7 +1,7 @@
 <?php 
 	/**
 	 * 解析feed基础列表页面
-	 * 解析$_POST['feedUrl']值
+	 * 解析$_POST['feedbutton']值
 	 * @since 2020-4-17
 	 * @param $_POST['feedUrl'] or $_COOKIE['feedKimUrls']
 	 * @return array $feedUrls
