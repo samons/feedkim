@@ -1,6 +1,6 @@
 <?php
 /**
- * 输出列表函数，方面套入式输入
+ * 输出列表函数，方便套入式输入
  * 
  * @since  2020-4-23
  * @param  array object
@@ -12,7 +12,8 @@ function feedkim_feedli_children($array,$children=""){
     $echo = '<ul class="sub-menu">';
   }else{
     $echo = '<ul class="feed-menu">';
-    if (current_user_can('level_10')){//管理员刷新rss时间
+    //管理员登录后可通过刷新数据库表刷新Feed时间
+    if (current_user_can('level_10')){
       require_once('feeds-update.php');
       $echo .= feedkim_feeds_update();
     }
@@ -25,10 +26,7 @@ function feedkim_feedli_children($array,$children=""){
     $item_url = $itemsV -> url;
     $item_type_label = $itemsV -> type_label;
     $item_children = $itemsV -> children;
-    //管理员才能刷新最后更新时间
-    // if (current_user_can('level_10') && $item_type_label == '自定义链接') {
-    //     $wpdb->update('wp_posts',array('post_date'=>date('Y-m-d h:i:s')),array('ID'=>$item_ID));
-    // }
+    $item_update = $itemsV -> post_date_gmt;
 
     $echo .= '<li class="menu-item" id="item-'.$item_ID.'">';
     if($item_type_label == '自定义链接'){
@@ -41,8 +39,18 @@ function feedkim_feedli_children($array,$children=""){
         $item_children_urls = implode(',',$item_children_url_array);
         $echo .= '<button type="submit" class="btn btn-link" name="feedbutton" value="'.$item_children_urls.'">'.$item_post_title.'</button>';
       }else{
-        $echo .= '<button type="submit" class="btn btn-link" name="feedbutton" value="'.$item_url.'">'.$item_post_title.'</button>';
-        //$echo .= '<span>1</span>';//图标
+        $echo .= '<button type="submit" id="feed-'.$item_ID.'" class="btn btn-link" name="feedbutton" value="'.$item_url.'">'.$item_post_title.'</button>';
+        //提醒新内容图标
+        //借用1800秒时间COOKIE，对比数据库更新字段，有更新内容就显示<SPAN>
+        if ($_COOKIE['feedKimLastTimeX']) {
+          if ($_COOKIE['feedKimLastTimeX']<$item_update) {
+            $echo .= '<span class="glyphicon glyphicon-bell"></span>';
+          }
+        }else{
+          if (!$_COOKIE['feedKimLastTime'] || ($_COOKIE['feedKimLastTime']<$item_update)) {
+            $echo .= '<span class="glyphicon glyphicon-bell"></span>';
+          }
+        }
       }
     }else{
       $echo .= '<a href="'.$item_url.'" title="'.$item_title.'">'.$item_title.'</a>';

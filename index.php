@@ -10,17 +10,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<?php //RSS源，对应的是feeds菜单
 				if ( has_nav_menu('feeds')) { ?>
 				<form method="POST" action="<?php echo home_url('/');?>" role="form">
-				<?php 
-				// 	wp_nav_menu(array(
-				// 	'theme_location' => 'feeds',
-				// 	'container'  => 'div',
-				// 	'container_id'  => 'feeds-div',
-				// 	'container_class' => 'feeds-div',
-				// 	'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-				// 	'menu_class' => 'feed-menu'
-				// ),);
-				require_once('feeds-menu-tree.php');
-				?>
+					<?php require_once('feeds-menu-tree.php');?>
 				</form>
 				<?php } ?>
 			</div>
@@ -28,13 +18,6 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 		<div class="col-sm-9 col-md-7 list">
 			<ul id="indexListUl">
 				<?php
-				// $feedsTreesss = feedkim_get_nav_menu_tree('feeds');
-				// echo '<pre>';
-				// print_r($feedsTreesss);
-				// echo '</pre>';
-				//echo 'post:'.$_POST['feedbutton'].'<br>COOKIE:'.$_COOKIE['feedKimUrls'];
-
-				//以上为测试结构
 				if(is_user_logged_in()){
 					get_template_part('user-logged-in');//快速发文
 				}else{

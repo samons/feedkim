@@ -37,24 +37,25 @@ if ($_POST['feedsUpdate']=='feedsUpdate') {
       continue;
     }else{
       foreach ($feed->get_items(0,1) as $item){
-        $update = $item->get_date();
-        $feedkim_IDtoUpdate[$ID] = $update;//单数组，结构{ID=>update}
+        $update = $item->get_date('Y-m-d H:i:s');
+        //$feedkim_IDtoUpdate[$ID] = $update;单数组，结构{ID=>update}
+        //var_dump($feedkim_IDtoUpdate);
+        //跟新数据表中wp_Posts中post-date信息
+        $sql = "UPDATE ".$table_wp_posts." SET `post_date_gmt` = '".$update."' WHERE `ID` = ".$ID;
+        $results = $wpdb->get_results($sql);
       }
     }
   }
-  //跟新数据表中wp_Posts中post-date信息
-  foreach ($feedkim_IDtoUpdate as $ID => $update) {
-    $wpdb->update($table_wp_posts,array('post-date'=>date('Y-m-d h:i:s',$update)),array('ID'=>$ID));
-  }
-  //关闭数据库操作
+
+  //关闭数据库
   $wpdb->flush();
-  var_dump($feedkim_IDtoUpdate);
+  
 }
 
 //刷新按钮界面
 function feedkim_feeds_update(){
   $updateButton = '<li>';
-  $updateButton .= '<button type="submit" class="btn btn-link" name="feedsUpdate" value="feedsUpdate">'.__('刷新RSS时间','feedkim').'</button>';
+  $updateButton .= '<button type="submit" class="btn btn-link" name="feedsUpdate" value="feedsUpdate"><i class="glyphicon glyphicon-repeat"></i> '.__('刷新FEED时间','feedkim').'</button>';
   $updateButton .= '</li>';
 
   return $updateButton;
