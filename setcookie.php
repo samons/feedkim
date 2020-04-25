@@ -9,10 +9,17 @@
 if (isset($_POST['feedbutton'])) {
 	setcookie('feedKimUrls',$_POST['feedbutton'],time()+604800);
 }
+// setcookie('feedKimLastTime','',time()-800);
+// setcookie('feedKimLastTimeX','',time()-800);
+
+//没有X时间并且存在lastTime时间时，借用1800秒作为过渡阅读使用
+if(!$_COOKIE['feedKimLastTimeX']){
+	if ($_COOKIE['feedKimLastTime']) {
+		setcookie('feedKimLastTimeX',$_COOKIE['feedKimLastTime'],time()+1800);
+	}else{
+		setcookie('feedKimLastTimeX',date('Y-m-d H:i:s',time()-604800),time()+1800);
+	}
+}
 
 setcookie('feedKimLastTime',date('Y-m-d H:i:s',time()),time()+604800);
-//没有X时间并且存在lastTime时间时，借用1800秒作为过渡阅读使用
-if(!$_COOKIE['feedKimLastTimeX'] && $_COOKIE['feedKimLastTime']){
-	setcookie('feedKimLastTimeX',$_COOKIE['feedKimLastTime'],time()+1800);
-}
 ?>
