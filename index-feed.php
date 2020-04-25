@@ -56,7 +56,7 @@
 			<div class="media">
 				<div class="media-left">
 				    <a target="_blank" rel="nofollow" href="<?php echo $item->get_permalink();?>" title="<?php echo $item->get_title();?>">
-				      <img class="media-object" src="<?php echo $item->get_base();?>/favicon.ico" alt="favicon.ico" onerror="javascript:this.src='<?php bloginfo('template_url'); ?>/image/favicon.ico';">
+				      <img class="media-object" src="//<?php echo feedkim_parse_url($item->get_base());?>/favicon.ico" alt="favicon.ico" onerror="javascript:this.src='<?php bloginfo('template_url'); ?>/image/favicon.ico';">
 				    </a>
 				</div>
 				<div class="media-body">

@@ -15,9 +15,9 @@ if (isset($_POST['feedbutton'])) {
 //没有X时间并且存在lastTime时间时，借用1800秒作为过渡阅读使用
 if(!$_COOKIE['feedKimLastTimeX']){
 	if ($_COOKIE['feedKimLastTime']) {
-		setcookie('feedKimLastTimeX',$_COOKIE['feedKimLastTime'],time()+1800);
+		setcookie('feedKimLastTimeX',$_COOKIE['feedKimLastTime'],time()+28800);
 	}else{
-		setcookie('feedKimLastTimeX',date('Y-m-d H:i:s',time()-604800),time()+1800);
+		setcookie('feedKimLastTimeX',date('Y-m-d H:i:s',time()-604800),time()+28800);
 	}
 }
 
