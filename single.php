@@ -21,7 +21,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 		<div class="col-sm-10 single-box">
 			<h1><?php single_post_title(); ?></h1><hr>
 			<ol class="breadcrumb">
-				<li><a href="<?php echo admin_url(); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a></li>
+				<li><a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a></li>
 				<?php //路径导航
 					$category = get_the_category();
 					$thisCate = $category[0]->cat_name;
