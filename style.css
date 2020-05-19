@@ -139,6 +139,24 @@ body.blog{
 	border-bottom: 1px solid #dedede;
 	font-weight: 700;
 }
+@media (min-width: 1000px){
+	.index-list .modal-content{width:60vw}
+	.index-list .modal-content .modal-header .modal-title{font-weight:600;font-size:160%;}
+	.index-list .modal-body{
+		text-align: justify;
+		color: #191e23;
+		line-height: 1.8;
+		font-size: 16px;
+	}
+	.index-list .modal-body p{margin-top: 1em;margin-bottom: 1em;text-indent: 2em;}
+	.index-list .modal-body img{display: block;margin: 0 auto}
+	.index-list .modal-body strong{font-size:120%}
+	.index-list .modal-body h2,
+	.index-list .modal-body h3,
+	.index-list .modal-body h4,
+	.index-list .modal-body h5,
+	.index-list .modal-body h6{font-weight:600}
+}
 /*widget*/
 .widget{text-align: justify}
 .widget h5::before{
