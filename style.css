@@ -105,11 +105,13 @@ body.blog{
 	border-color: rgba(20,20,20,0.05);
 	border-radius: 50%;
 }
-.index-list .media .media-body .media-heading{
+.index-list .media .media-body .media-heading,
+.index-list .media .media-body .media-heading .btn-h4{
 	font-weight:700;
 	line-height: 1.25em;
 }
-.index-list .media .media-body .media-heading .media-myTitle{
+.index-list .media .media-body .media-heading .media-myTitle,
+.index-list .media .media-body .media-heading .btn-h4{
 	color: #333 !important;
 }
 .index-list .media .media-body .media-about{

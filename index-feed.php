@@ -60,7 +60,7 @@
 				    </a>
 				</div>
 				<div class="media-body">
-				    <h4 class="media-heading"><?php echo $item->get_title();?></h4>
+				    <h4 class="media-heading"><button type="button" class="btn-link btn-h4 text-left" data-toggle="modal" data-target="#<?php echo $timeID;?>"><?php echo $item->get_title();?></button></h4>
 				    <h6 class="media-about">
 				    <?php 
 				    	if($author){
@@ -76,6 +76,21 @@
 				    <p><?php echo $html_p;?>
 					<button type="button" class="btn-link" data-toggle="modal" data-target="#<?php echo $timeID;?>">[...]</button>
 					</p>
+
+					<?php }//end description
+					if ($imagesArray) {
+						if (count($imagesArray[0])==1) {
+							echo '<button type="button" class="btn-link" data-toggle="modal" data-target="#'.$timeID.'">'.$imagesArray[0][0].'</button>';
+						}else{
+							echo '<div class="images-box row">';
+							$imagesArray3 = array_slice($imagesArray[1],0,3);
+							foreach ($imagesArray3 as $imageUrl) {
+								echo '<button type="button" class="btn col-md-4 col-xs-6" data-toggle="modal" data-target="#'.$timeID.'" style="background-image:url('.$imageUrl.'),url('.get_template_directory_uri().'/image/pixels.png)"></button>';
+							}
+							echo '<span class="clearfix"></span></div>';
+						}
+					}//end $images
+					?>
 					<!-- 完整的descriptionn内容 -->
 					<div class="modal fade" id="<?php echo $timeID;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					  <div class="modal-dialog" role="document">
@@ -93,20 +108,7 @@
 					    </div>
 					  </div>
 					</div><!-- modal end -->
-					<?php }//end description
-					if ($imagesArray) {
-						if (count($imagesArray[0])==1) {
-							echo $imagesArray[0][0];
-						}else{
-							echo '<div class="images-box row">';
-							$imagesArray3 = array_slice($imagesArray[1],0,3);
-							foreach ($imagesArray3 as $imageUrl) {
-								echo '<div class="col-md-4 col-xs-6" style="background-image:url('.$imageUrl.'),url('.get_template_directory_uri().'/image/pixels.png)"></div>';
-							}
-							echo '<span class="clearfix"></span></div>';
-						}
-					}//end $images
-					?>
+					
 				</div>
 			</div>
 			<?php
