@@ -32,7 +32,12 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				<li class="active hidden-xs">
 				<?php 
 					$thisAuthorID = get_post($post->ID)->post_author;
-					feedkim_the_author($thisAuthorID);
+					$feedkim_authors = get_post_meta(get_the_ID(),'author');
+					if (empty($feedkim_authors[0])) {
+						feedkim_the_author($thisAuthorID);						
+					}else{
+						echo $feedkim_authors[0];
+					}
 					echo ' @ ';
 					the_time('Y-m-d h:s');
 				?>
@@ -44,9 +49,12 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 					the_post();
 					the_content();
 				}
+				$feedkim_author_url = get_post_meta(get_the_ID(),'url');
+				if (!empty($feedkim_author_url[0])) {
+					echo '<p class="single-author">'.__('文章来自：','feedkim').$feedkim_author_url[0].'</p>';
+				}
 				comments_template();
 			?>
-
 		</div>
 		<div class="clearfix visible-xs-block hidden-xs"></div>
 	</div>

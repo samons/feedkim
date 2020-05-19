@@ -343,6 +343,7 @@ body.blog{
 .single-box p{
 	margin-top: 1em;
 	margin-bottom:1em;
+	text-indent:2em;
 }
 .single-box blockquote p{
 	letter-spacing:0.1em;
@@ -354,6 +355,15 @@ body.blog{
 .single-box img{
 	max-width:100%;
 	height:auto;
+}
+.single-box .breadcrumb{
+	font-size:80%;
+	background-color:#f5f5f586;
+}
+.single-box .single-author{
+	margin-top: 5em;
+	font-size: 80%;
+	color: #888;
 }
 /*comment*/
 #accordion .children{margin-top:10px}
