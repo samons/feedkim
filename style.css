@@ -326,7 +326,7 @@ body.blog{
 	color: #191e23;
 	line-height:1.8;
 }
-.single-box>h1:first-child{margin-top:0}
+.single-box>h1:first-child{margin-top:0;line-height: 1.4em;}
 .single-box h1,
 .single-box h2,
 .single-box h3,
