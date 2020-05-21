@@ -345,9 +345,6 @@ body.blog{
 	margin-bottom:1em;
 	text-indent:2em;
 }
-.single-box blockquote p{
-	letter-spacing:0.1em;
-}
 .single-box blockquote cite{
 	font-size: 85%;
 	color: #888;
