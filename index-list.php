@@ -11,8 +11,8 @@ if(have_posts()){
 <li id="pagerNav">
 	<nav>
 	  <ul class="pager">
-	    <li class="previous"><?php previous_posts_link(__('上一页','limiwu')) ?></li>
-	    <li class="next" id="older_posts"><?php next_posts_link(__('下一页','limiwu')) ?></li>
+	    <li class="previous"><?php previous_posts_link(__('上一页','feedkim')) ?></li>
+	    <li class="next" id="older_posts"><?php next_posts_link(__('下一页','feedkim')) ?></li>
 	  </ul>
 	</nav>
 </li><!-- pagerNav end -->
