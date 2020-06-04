@@ -30,7 +30,7 @@
 				<div class="media-body excerpt"><?php the_excerpt();//文章摘要?></div>
 			<?php if (has_post_thumbnail()):?>
 				<div class="media-right">
-					<a href="<?php the_permalink(); ?>" target="_blank" title="<?php the_title();?>"><img class="media-object right-img" src="<?php echo the_post_thumbnail_url();?>" alt="<?php the_title();?>" /></a>
+					<a href="<?php the_permalink(); ?>" target="_blank" title="<?php the_title();?>"><img class="media-object right-img" src="<?php echo the_post_thumbnail_url('thumbnail');?>" alt="<?php the_title();?>" /></a>
 				</div>
 			<?php endif	?>
       		</div>				
