@@ -113,6 +113,9 @@ body.blog{
 .index-list .media .media-body .media-heading .btn-h4{
 	color: #333 !important;
 }
+.index-list .media .media-body .media-heading .media-myTitle:hover{
+	color: #428bca !important;
+}
 .index-list .media .media-body .media-about{
 	color:#919191;
 }
