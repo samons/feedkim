@@ -6,7 +6,7 @@
 ?>
 <li class="item" id="post-<?php the_ID(); ?>">
 	<div class="media">
-		<div class="media-left">
+		<div class="media-left hidden-xs">
 			<a href="<?php the_permalink(); ?>" target="_blank" title="<?php the_title_attribute(); ?>">
 				<?php $feedkim_author_url = get_post_meta(get_the_ID(),'url');
 				if (empty($feedkim_author_url[0])):?>

@@ -3,7 +3,7 @@
         Copyright © 2019-2020 <a href="<?php echo admin_url(); ?>" target="_blank"><?php bloginfo('name'); ?></a> <span class="glyphicon glyphicon-pencil"></span> 
         <a href="//beian.miit.gov.cn/" rel="nofollow" target="_blank"><?php echo get_option( 'feedkim_get_ICP' );?></a> <!--网站备案号-->
         <span class="glyphicon glyphicon-tree-deciduous"></span> <a href="<?php bloginfo('rdf_url'); ?>" target="_blank">RSS</a> 
-        Powered By <a href="//cn.wordpress.org" rel="nofollow" target="_blank">WordPress</a>. Theme by <a href="//feed.kim" target="_blank">feed.kim</a>
+        Powered By <a href="//cn.wordpress.org" rel="nofollow" target="_blank">WordPress</a>. Theme by <a href="//www.dianzai.cn" target="_blank"><?php _e('电载·中国','feedkim');?></a>
         <?php _e('商业授权版','feedkim');?>
     </p>
 </footer>
