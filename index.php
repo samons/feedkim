@@ -5,6 +5,16 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 ?>
 <div class="container">
 	<div class="row index-list">
+		<div class="col-sm-3 col-md-2 left-feeds sidebar hidden-xs">
+			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
+				<?php //RSS源，对应的是feeds菜单
+				if ( has_nav_menu('feeds')) { ?>
+				<form method="POST" action="<?php echo home_url('/');?>" role="form">
+					<?php require_once('feeds-menu-tree.php');?>
+				</form>
+				<?php } ?>
+			</div>
+		</div>
 		<div class="col-sm-9 col-md-7 list">
 			<ul id="indexListUl">
 				<?php
@@ -39,16 +49,6 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 		<div class="col-md-3 hidden-sm hidden-xs right sidebar">
 			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
 				<?php get_sidebar();//获取侧栏 ?>
-			</div>
-		</div>
-		<div class="col-sm-3 col-md-2 left-feeds sidebar hidden-xs">
-			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
-				<?php //RSS源，对应的是feeds菜单
-				if ( has_nav_menu('feeds')) { ?>
-				<form method="POST" action="<?php echo home_url('/');?>" role="form">
-					<?php require_once('feeds-menu-tree.php');?>
-				</form>
-				<?php } ?>
 			</div>
 		</div>
 		<div class="clearfix visible-xs-block hidden-xs"></div>
