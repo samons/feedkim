@@ -411,3 +411,6 @@ pre.prettyprint{border-color:#ccc;padding:8px}
 figure.aligncenter{text-align:center}
 figure.alignleft{text-align:left}
 figure.alignright{text-align:right}
+.os-profile-box{text-align:center}
+.os-profile-box img{border-radius:50%;margin-bottom:1em;}
+.page .os-share-box,.single .os-share-box{text-align:right}
