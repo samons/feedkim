@@ -51,6 +51,15 @@ add_filter('show_admin_bar', '__return_false');
 if( function_exists('register_sidebar') ) {
     register_sidebar(array(
         'name' => __('文章列表右侧栏','feedkim'),
+        'description'   => __('放置在文章列表右侧，随滚动','feedkim'),
+        'class' => 'index-sider',
+        'before_widget' => '<aside class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h5 class="glyphicon">',
+        'after_title' => '</h5>'
+    ));
+    register_sidebar(array(
+        'name' => __('文章右侧栏','feedkim'),
         'description'   => __('放置在文章页面右侧，随滚动','feedkim'),
         'class' => 'index-sider',
         'before_widget' => '<aside class="widget %2$s">',

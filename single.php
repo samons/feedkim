@@ -8,17 +8,7 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 ?>
 <div class="container">
 	<div class="row index-list">
-		<div class="col-sm-2 left-feeds sidebar hidden-xs">
-			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
-				<?php //RSS源，对应的是feeds菜单
-				if ( has_nav_menu('feeds')) { ?>
-				<form method="POST" action="<?php echo home_url('/');?>" role="form">
-					<?php require_once('feeds-menu-tree.php');?>
-				</form>
-				<?php } ?>
-			</div>
-		</div>
-		<div class="col-sm-10 single-box">
+		<div class="col-sm-9 single-box">
 			<h1><?php single_post_title(); ?></h1><hr>
 			<ol class="breadcrumb">
 				<li><a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a></li>
@@ -55,6 +45,11 @@ error_reporting(E_ALL ^ (E_WARNING|E_NOTICE));// 屏蔽域名不存在等访问�
 				}
 				comments_template();
 			?>
+		</div>
+		<div class="col-md-3 hidden-sm hidden-xs right sidebar">
+			<div class="theiaStickySidebar"><!-- 侧栏滚动 -->
+				<?php get_sidebar();//获取侧栏 ?>
+			</div>
 		</div>
 		<div class="clearfix visible-xs-block hidden-xs"></div>
 	</div>

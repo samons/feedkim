@@ -1,9 +1,9 @@
 @charset "UTF-8";
 /*
 Theme Name: feed.KIM阅读主题
-Theme URI: https://feed.kim/
+Theme URI: http://www.dianzai.cn/
 Author: 紫铜炉
-Author URI: https://feed.kim/
+Author URI: http://www.dianzai.cn/
 Description: feed.kim，个人的feed浏览阅读器。本主题借助wordpress平台，使用模版的方式快速搭建起一个完整的feed(RSS)阅读器，为个人用户提供完善的平台支持。
 Version: 1.0
 License: 
@@ -91,7 +91,7 @@ body.blog{
 	padding: 15px;
 	margin-bottom: 10px;
 	border-radius: 2px;
-	background-color:#f1f1f1;
+	background-color:#fefefe;
 }
 .index-list .media{
 	text-align:justify;
@@ -129,7 +129,7 @@ body.blog{
 .index-list .media .ico{transition:all 0.6s !important}
 .index-list .media .ico:hover{transform:rotate(35deg)}
 /*right*/
-.index-list .right{
+.home .index-list .right,.blog .index-list .right{
 	padding-left:0;
 }
 .index-list .right h5{
