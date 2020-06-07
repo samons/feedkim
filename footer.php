@@ -4,7 +4,12 @@
         <a href="//beian.miit.gov.cn/" rel="nofollow" target="_blank"><?php echo get_option( 'feedkim_get_ICP' );?></a> <!--网站备案号-->
         <span class="glyphicon glyphicon-tree-deciduous"></span> <a href="<?php bloginfo('rdf_url'); ?>" target="_blank">RSS</a> 
         Powered By <a href="//cn.wordpress.org" rel="nofollow" target="_blank">WordPress</a>. Theme by <a href="//www.dianzai.cn" target="_blank"><?php _e('电载·中国','feedkim');?></a>
-        <?php _e('商业授权版','feedkim');?>
+        <?php 
+            _e('商业授权版','feedkim');
+            if (defined('XMLSF_VERSION')){
+                echo ' <a href="'.site_url().'/sitemap.xml" target="_blank" rel="nofollow" title="xml">SiteMap</a>';
+            }
+        ?>
     </p>
 </footer>
 
