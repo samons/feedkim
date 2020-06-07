@@ -7,7 +7,7 @@
         <?php 
             _e('商业授权版','feedkim');
             if (defined('XMLSF_VERSION')){
-                echo ' <a href="'.site_url().'/sitemap.xml" target="_blank" rel="nofollow" title="xml">SiteMap</a>';
+                echo ' <a href="'.site_url().'/sitemap.xml" target="_blank" title="xml">SiteMap</a>';
             }
         ?>
     </p>
