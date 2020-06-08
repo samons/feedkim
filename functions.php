@@ -16,7 +16,6 @@ require_once(TEMPLATEPATH . '/option-setting.php');
 **/
 add_filter('rest_enabled', '__return_false');
 add_filter('rest_jsonp_enabled', '__return_false');
-add_filter('xmlrpc_enabled', '__return_false');
 remove_action('wp_head','wp_resource_hints',2);
 remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
@@ -35,11 +34,6 @@ function fanly_remove_block_library_css() {
     wp_dequeue_style( 'wp-block-library' );
 }
 add_action( 'wp_enqueue_scripts', 'fanly_remove_block_library_css', 100 );
-/*
-*   关闭pingback功能
-*   form：http://www.360doc.com/content/17/1105/10/57493_701026541.shtml
-*/
-add_filter('xmlrpc_enabled', '__return_false'); 
 
 // 开启缩略图功能
 add_theme_support('post-thumbnails');
