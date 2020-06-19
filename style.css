@@ -98,7 +98,7 @@ body.blog{
 }
 .index-list .media .media-left img{
 	text-align:right;
-	width: 32px;
+	width:80px;
 	height: auto;
 	border: 2px solid #ccc;
 	border-color: rgba(20,20,20,0.05);
@@ -159,7 +159,7 @@ body.blog{
 	.index-list .modal-body h6{font-weight:600}
 }
 .index-list .media-right .right-img{
-	width: 120px;
+	width: 240px;
 	height: auto;
 	border: 1px solid #a3a3a3;
 }
